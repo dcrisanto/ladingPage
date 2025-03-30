@@ -1,0 +1,30 @@
+import { useGenerals } from "@/app/context/generals.context";
+import Image from "next/image";
+import Link from "next/link";
+
+export const Logo = () => {
+  const { general } = useGenerals();
+
+  const baseURL = process.env.STRAPI_URL; // URL del backend
+
+  const logoURL = general.logo?.url
+    ? `${baseURL}${general.logo.url}` // Convertimos la URL relativa en absoluta
+    : "/default-logo.svg"; // Imagen por defecto si no hay logo
+
+
+  console.log("Logo URL:", general.logo.url); // Para verificar en consola
+
+  return (
+    <Link href="/">
+      {logoURL ? (
+        <div className="container__logo flex">
+            <Image 
+          style={{ objectFit: "contain" }} // Evita que la imagen se distorsione
+          priority src={logoURL} width={70} height={70} alt="Logo"  />
+        </div>
+      ) : (
+        <span>Logo no disponible</span>
+      )}
+    </Link>
+  );
+};
