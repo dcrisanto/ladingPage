@@ -23,7 +23,7 @@ const HomeSolve = ({ data }: HomeBannerProps)  => {
     return(
         <section className="home_problems_solve px-4 py-8 md:px-8 lg:px-16">
             <p className="text-xl font-semibold text-center mb-6 text-secundary">{data.title}</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {data.card.map((item: CardItem, index: number) => (
                 <div 
                 key={index} 

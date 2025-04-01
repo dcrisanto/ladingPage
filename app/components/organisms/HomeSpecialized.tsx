@@ -15,8 +15,8 @@ interface HomeBannerProps {
   }
 
 
-const HomeServices = ({ data }: HomeBannerProps) => {
-    console.log(data.card);
+const HomeSpecialized = ({ data }: HomeBannerProps) => {
+    console.log(data);
     const baseApi = process.env.NEXT_PUBLIC_STRAPI_URL;
     // Usamos un estado para cada tarjeta para controlar el overlay individualmente
     const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
@@ -52,8 +52,8 @@ const HomeServices = ({ data }: HomeBannerProps) => {
     );
 
     return (
-        <section className="home__services w-full p-10">
-          <p className="text-primary text-center sm:text-[40px] font-bold mb-6">{data.title}</p>
+        <section className="home__services w-full bg-primary/10 p-10">
+          <p className="text-secundary text-center sm:text-[40px] font-bold mb-6">{data.title}</p>
     
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4">
             {data.card.map((item: CardItem, index: number) => (
@@ -120,4 +120,4 @@ const HomeServices = ({ data }: HomeBannerProps) => {
     };
     
 
-export default HomeServices;
+export default HomeSpecialized;

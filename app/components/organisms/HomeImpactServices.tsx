@@ -17,7 +17,7 @@ const HomeImpactServices = ({ data }: HomeBannerProps) => {
     const baseApi = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     return(
-        <section className="home_impact-services flex flex-col p-12">
+        <section className="home_impact-services flex flex-col p-12 w-full">
             <p className="text-white text-center text-2xl font-bold mb-6">{data.title}</p>
         
             <div className="flex flex-wrap justify-center gap-5">
