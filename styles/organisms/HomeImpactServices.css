@@ -1,0 +1,29 @@
+.home_impact-services {
+    background-image: url('/assets/imgs/img-impact-services.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    filter: brightness(50%);
+
+    .icon-card {
+        height: 50px;
+    }
+}
+
+
+.home_impact-services::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(59, 130, 246, 0.9); /* Aumenta la opacidad */
+    z-index: 1;
+}
+
+.home_impact-services > * {
+    position: relative;
+    z-index: 2;
+}

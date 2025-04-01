@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import '../molecules/index.css';
+@import '../organisms/index.css';
 
 * {
   box-sizing: border-box;

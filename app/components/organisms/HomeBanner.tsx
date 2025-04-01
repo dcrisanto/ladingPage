@@ -2,7 +2,7 @@ interface HomeBannerProps {
     data: any; // Reemplázalo con un tipo más preciso si tienes la estructura
   }
 
-  const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+  const baseApi = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const HomeBanner = ({ data }: HomeBannerProps) => {
     console.log(data);
@@ -10,7 +10,7 @@ interface HomeBannerProps {
     // Aseguramos que `img_desktop` tiene al menos una imagen
     const desktopImageUrl =
       data?.img_desktop?.length > 0
-        ? `${process.env.STRAPI_URL}${data.img_desktop[0].url}`
+        ? `${baseApi}${data.img_desktop[0].url}`
         : "";
   
     return (

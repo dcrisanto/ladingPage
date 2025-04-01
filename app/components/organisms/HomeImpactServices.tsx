@@ -8,32 +8,41 @@ interface HomeBannerProps {
     title: string;
     text: string;
     description: string;
-    img: any
+    image: any
   }
 
 
 const HomeImpactServices = ({ data }: HomeBannerProps) => {
-    const EqualIcon = () => (
-        <div className="bg-gray-200 p-2 rounded-full shadow-md mx-2 flex items-center justify-center">
-          <Image src="/icons/equal.svg" alt="Equal Icon" width={20} height={20} />
-        </div>
-      );
+    console.log(data.card);
+    const baseApi = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     return(
-        <section className="home_impact-services">
-            <p className="text-white">{data.title}</p>
-            <div>
+        <section className="home_impact-services flex flex-col p-12">
+            <p className="text-white text-center text-2xl font-bold mb-6">{data.title}</p>
+        
+            <div className="flex flex-wrap justify-center gap-5">
             {data.card.map((item: CardItem, index: number) => (
-                <div 
-                key={index} 
-                className="grid"
+                <div
+                key={index}
+                className="flex flex-col items-center text-center p-4 bg-white/10 w-[35%] md:w-1/5 border-2 border-white"
                 >
-                    <EqualIcon />
-                    <p className="text-white font-bold">{item.title}</p>
+                {item.image && item.image.url && (
+                    <Image
+                    className="mb-2 icon-card"
+                    style={{ objectFit: "contain" }}
+                    priority
+                    src={`${baseApi}${item.image.url}`}
+                    width={50}
+                    height={50}
+                    alt={item.title || "Logo"}
+                    />
+                )}
+                <p className="text-white font-bold">{item.title}</p>
                 </div>
             ))}
             </div>
-        </section> 
+        </section>
+      
     )
 }
 

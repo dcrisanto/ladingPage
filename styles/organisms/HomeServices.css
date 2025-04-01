@@ -1,0 +1,14 @@
+.home__services {
+    @apply grid justify-items-center;
+
+    @screen phone {
+        .img {
+            width: 300px;
+            height: 200px;
+        }
+    }
+
+    .card__text {
+
+    }
+}

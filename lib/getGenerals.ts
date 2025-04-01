@@ -8,8 +8,8 @@ export async function getGenerals() {
     if (!baseURL) throw new Error("NEXT_PUBLIC_STRAPI_URL no está definido");
 
     const responses = await Promise.all([
-      axios.get(`${baseURL}/general?populate=*`),
-      axios.get(`${baseURL}/multilanguage?populate=*`),
+      axios.get(`${baseURL}/api/general?populate=*`),
+      axios.get(`${baseURL}/api/multilanguage?populate=*`),
     ]);
 
     const [{ data: general }, { data: multilanguage }] = responses;

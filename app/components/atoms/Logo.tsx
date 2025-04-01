@@ -5,10 +5,10 @@ import Link from "next/link";
 export const Logo = () => {
   const { general } = useGenerals();
 
-  const baseURL = process.env.STRAPI_URL; // URL del backend
+  const baseApi = process.env.NEXT_PUBLIC_STRAPI_URL; // URL del backend
 
   const logoURL = general.logo?.url
-    ? `${baseURL}${general.logo.url}` // Convertimos la URL relativa en absoluta
+    ? `${baseApi}${general.logo.url}` // Convertimos la URL relativa en absoluta
     : "/default-logo.svg"; // Imagen por defecto si no hay logo
 
 
