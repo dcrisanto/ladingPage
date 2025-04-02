@@ -1,0 +1,12 @@
+.Navbar {
+    height: 80px;
+    @apply flex items-center justify-center;
+    
+}
+
+@screen tablet {
+    .Navbar {
+        height: 90px;
+        padding: 20px;
+    }
+}

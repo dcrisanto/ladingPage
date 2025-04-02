@@ -4,6 +4,7 @@
 
 @import '../molecules/index.css';
 @import '../organisms/index.css';
+@import '../atoms/index.css';
 
 * {
   box-sizing: border-box;

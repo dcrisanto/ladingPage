@@ -19,8 +19,12 @@ export const Logo = () => {
       {logoURL ? (
         <div className="container__logo flex">
             <Image 
-          style={{ objectFit: "contain" }} // Evita que la imagen se distorsione
-          priority src={logoURL} width={70} height={70} alt="Logo"  />
+            className="logo"
+            priority src={logoURL} 
+            width={120} 
+            height={70} 
+            alt="Logo"  
+            />
         </div>
       ) : (
         <span>Logo no disponible</span>
