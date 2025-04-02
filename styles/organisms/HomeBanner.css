@@ -1,4 +1,82 @@
 .home_banner {
-    width: 100vw;
-    @apply flex
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+/*     @apply grid  bg-cover w-full bg-center min-h-screen md:bg-center items-end sm:bg-top   
+ */}
+
+.home_banner-content {
+    @apply flex flex-col justify-center items-start
+}
+
+@screen phone {
+
+    .home_banner {
+        @apply grid  bg-cover w-full bg-center min-h-screen md:bg-center items-end sm:bg-top  items-center
+    }
+
+    .home__banner-content-principal {
+        @apply w-full bg-primary flex flex-col justify-center items-center p-10 gap-10
+    }
+
+    .title__home-banner {
+        @apply text-[12px]
+    }
+
+    .subtitle__home-banner {
+        @apply text-[32px]
+    }
+
+    .description__home-banner {
+        @apply text-[14px] 
+    }
+}
+
+@screen tablet {
+    .home_banner {
+        @apply min-h-[80vh] 
+    }
+
+    .home__banner-content-principal {
+        @apply flex-row bg-transparent items-start justify-around
+    }    
+
+    .home_banner-content {
+        @apply bg-primary max-w-[400px] min-h-[600px] p-10 justify-start mt-20
+    }
+
+    .title__home-banner {
+        @apply text-[20px]
+    }
+
+    .subtitle__home-banner {
+        @apply text-[40px]
+    }
+
+    .description__home-banner {
+        @apply text-[16px] 
+    }
+
+    .home_banner-form-contact {
+        @apply flex flex-col items-center
+    }
+}
+
+@screen laptop {
+    .home_banner-content {
+        @apply bg-primary min-w-[600px] min-h-[700px]
+    }
+
+    .title__home-banner {
+        @apply text-[24px]
+    }
+
+    .subtitle__home-banner {
+        @apply text-[64px]
+    }
+
+    .description__home-banner {
+        @apply text-[24px] 
+    }
+
 }

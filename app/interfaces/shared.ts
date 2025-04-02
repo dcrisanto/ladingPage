@@ -24,6 +24,7 @@ export interface InputForm {
   id: number;
   name: string;
   label: string;
+  placeholder: string;
 }
 
 export interface FormPersonal {

@@ -60,6 +60,62 @@ const initialState: ControllerState = {
     lbl_view_more: "",
     lbl_view_less: "",
     menu: [],
+    form: {
+      id: 1,
+      title: "",
+      name: {
+        id: 2,
+        name: "",
+        label: "",
+        placeholder: ""
+      },
+      email: {
+        id: 3,
+        name: "",
+        label: "",
+        placeholder: ""
+      },
+      phone: {
+        id: 4,
+        name: "",
+        label: "",
+        placeholder: ""
+      },
+      service: {
+        id: 5,
+        name: "",
+        label: "",
+        placeholder: ""
+      },
+      date: {
+        id: 6,
+        name: "",
+        label: "",
+        placeholder: ""
+      },
+      time: {
+        id: 7,
+        name: "",
+        label: "",
+        placeholder: ""
+      },
+      dateTime: {
+        id: 8,
+        name: "",
+        label: "",
+        placeholder: ""
+      },
+      messages: {
+        invalid_tel: "",
+        invalid_name: "",
+        mail_sent_ok: "",
+        invalid_email: "",
+        invalid_number: "",
+        invalid_required: "",
+        validation_error: "",
+        invalid_recaptcha: ""
+      }
+    }
   },
 };
 

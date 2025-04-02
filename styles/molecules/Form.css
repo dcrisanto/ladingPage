@@ -1,0 +1,42 @@
+@screen phone { 
+
+    .container__section-form {
+        @apply  p-6
+    }
+
+    .title__form  {
+        @apply text-[18px] 
+    }
+
+    .text__subtitle {
+        @apply text-[12px]
+    }
+
+    .text__label {
+        @apply text-[14px]
+    }
+
+}
+
+@screen laptop {
+    .container__section-form {
+        @apply flex flex-col justify-center min-w-[490px] min-h-[690px] p-10
+    }
+
+    .container__form {
+        @apply flex flex-col gap-4 justify-center
+    }
+
+    .title__form  {
+        @apply text-[24px]
+    }
+
+    .text__subtitle {
+        @apply text-[18px]
+    }
+
+    .text__label {
+        @apply text-[18px]
+    }
+
+}

@@ -27,7 +27,7 @@ module.exports = {
         montserrat: ['var(--font-montserrat)'],
       },
       screens: {
-        phone: '420px',
+        phone: '300px',
         tablet: '768px',
         tabletlg: '960px',
         tabletxl: '1024px',

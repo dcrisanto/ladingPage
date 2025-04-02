@@ -9,7 +9,9 @@ export async function getGenerals() {
 
     const responses = await Promise.all([
       axios.get(`${baseURL}/api/general?populate=*`),
-      axios.get(`${baseURL}/api/multilanguage?populate=*`),
+      axios.get(
+        `${baseURL}/api/multilanguage?populate[menu]=*&populate[form][populate]=*`
+      ),
     ]);
 
     const [{ data: general }, { data: multilanguage }] = responses;

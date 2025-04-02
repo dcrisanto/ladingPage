@@ -14,7 +14,7 @@ export const Navbar = () => {
   //const pathname = usePathname();
   const { multilanguage } = useGenerals(); // 🔹 Obtenemos multilanguage desde el contexto
   const [isOpen, setIsOpen] = useState(false); // Estado para mostrar/ocultar menú en mobile
-
+  console.log(JSON.stringify(multilanguage, null, 2));
 
   return (
     <nav className="Navbar bg-white shadow-md relative">

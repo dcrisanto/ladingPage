@@ -30,7 +30,7 @@ export default async function Home() { //{ home }: HomeProps
   return (
     <div className="grid place-items-center min-h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col items-center w-full">
-{/*         <HomeBanner data={homeData.home_banner} /> */}
+        <HomeBanner data={homeData.home_banner} />
         <HomeSolve data={homeData.home_problems_solve} />
         <HomeImpactServices data={homeData.home_impact_services} />
         <HomeServices data={homeData.home_services} />
