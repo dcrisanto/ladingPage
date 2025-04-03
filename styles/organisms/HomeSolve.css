@@ -1,0 +1,47 @@
+.section__home_problems_solve {
+    @apply items-center justify-center pt-4 m-2
+}   
+
+.card__home-problems-solve {
+    @apply p-8 border border-gray-200 shadow-md
+}
+
+.container__title-card {
+    @apply flex justify-center p-2
+}
+
+.title__home-problems-solve {
+    @apply text-secundary pb-2
+}
+
+.title__card-home-solve, .text__card-home-solve {
+    @apply text-primary
+}
+
+.line {
+    @apply border-primary mb-2
+}
+
+@screen phone {
+    .section__home_problems_solve {
+        @apply flex flex-col
+    }   
+
+    .title__home-problems-solve {
+        @apply text-[18px]
+    }
+
+    .title__card-home-solve, .text__card-home-solve {
+        @apply text-[14px]
+    }
+}
+
+@screen laptop {
+    .section__home_problems_solve {
+        @apply flex
+    }   
+
+    .title__home-problems-solve {
+        @apply text-[32px]
+    }
+}

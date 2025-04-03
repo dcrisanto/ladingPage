@@ -1,0 +1,14 @@
+.horizontal-scroll-container {
+    @apply block md:hidden overflow-x-auto;
+    scrollbar-width: none;
+  }
+  
+  .horizontal-scroll {
+    @apply flex gap-4 p-4;
+    width: max-content;
+  }
+  
+  .card {
+    @apply w-48 h-32 bg-blue-500 text-white flex items-center justify-center rounded-lg shadow-md;
+  }
+  
