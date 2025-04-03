@@ -1,16 +1,16 @@
 .section__home_problems_solve {
-    @apply items-center justify-center pt-4 m-2
+    @apply w-full items-center justify-center pt-4 m-2
 }   
 
 .card__home-problems-solve {
-    @apply p-8 border border-gray-200 shadow-md
+    @apply flex flex-col justify-center items-center p-8 border border-gray-200 shadow-md
 }
 
 .container__title-card {
-    @apply flex justify-center p-2
+    @apply w-full flex justify-center items-center mb-4 pb-2 text-center border-b-2 border-primary
 }
 
-.title__home-problems-solve {
+.title__home-problems-solve, .description__card-home-solve {
     @apply text-secundary pb-2
 }
 
@@ -18,30 +18,87 @@
     @apply text-primary
 }
 
-.line {
-    @apply border-primary mb-2
+.container__icon {
+    @apply flex justify-center p-2 bg-primary rounded-full m-2
 }
 
 @screen phone {
     .section__home_problems_solve {
-        @apply flex flex-col
+        @apply flex flex-col relative w-full overflow-hidden; /* Evitar que la sección general se desborde */
     }   
 
     .title__home-problems-solve {
         @apply text-[18px]
     }
 
-    .title__card-home-solve, .text__card-home-solve {
+    .title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
         @apply text-[14px]
+    }
+    .cards__home-problems-solve {
+        @apply flex overflow-x-auto space-x-4 p-2;
+        scrollbar-width: none; /* Ocultar la barra de desplazamiento */
+        -webkit-overflow-scrolling: touch; /* Mejorar la experiencia de scroll en dispositivos táctiles */
+    }
+
+    .cards__home-problems-solve::-webkit-scrollbar {
+        display: none; /* Ocultar la barra de desplazamiento */
+    }
+
+    .card__home-problems-solve {
+        @apply max-w-md flex-shrink-0; /* Evitar que las cards se agranden */
     }
 }
 
-@screen laptop {
+@screen tablet {
     .section__home_problems_solve {
         @apply flex
     }   
 
+    .cards__home-problems-solve {
+        @apply flex justify-evenly overflow-visible
+    }
+
     .title__home-problems-solve {
         @apply text-[32px]
     }
+
+    .title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
+        @apply text-[16px]
+    }
+
+    .card__home-problems-solve {
+        @apply w-auto
+    }
 }
+
+@screen tabletxl {
+
+    .cards__home-problems-solve {
+        @apply w-full justify-around
+    }
+}
+
+@screen laptop {
+
+        .cards__home-problems-solve {
+            @apply justify-center gap-20
+        }
+}
+
+@screen desktop {
+
+    .cards__home-problems-solve {
+        @apply justify-center
+    }
+
+    .title__home-problems-solve {
+        @apply text-[40px]
+    }
+
+    ..title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
+        @apply text-[22px]
+    }
+}
+
+
+
