@@ -17,19 +17,19 @@ export const Navbar = () => {
   console.log(JSON.stringify(multilanguage, null, 2));
 
   return (
-    <nav className="Navbar bg-white shadow-md relative">
+    <nav className="Navbar bg-white shadow-md relative sm:h-[80px] md:h-[90px]">
       <div className="w-full p-6">
         <div className="flex justify-between items-center h-full">
           {/* Logo */}
           <Logo />
 
           {/* Menú Desktop */}
-          <div className="hidden md:flex md:gap-4 lg:gap-20 lg:pr-20">
+          <div className="hidden md:flex md:gap-4 lg:gap-10 lg:pr-20">
             {multilanguage?.menu?.map(({ id, label, url }) => (
               <Link
                 key={id}
                 href={url}
-                className="text-primary md:text-[21px]" /* hover:text-blue-500 */
+                className="text-primary md:text-[18px] lg:text-[21px]" /* hover:text-blue-500 */
               >
                 {label}
               </Link>

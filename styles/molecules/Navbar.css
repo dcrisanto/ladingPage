@@ -1,12 +1,16 @@
 .Navbar {
-    height: 80px;
-    @apply flex items-center justify-center;
-    
-}
-
-@screen tablet {
-    .Navbar {
-        height: 90px;
-        padding: 20px;
-    }
-}
+      @apply flex items-center justify-center 
+  }
+  
+  @screen phone {
+      .Navbar {
+          @apply h-[80px]
+      }
+  }
+  
+  @screen tablet {
+      .Navbar {
+          @apply h-[90px] p-5
+      }
+  }
+  

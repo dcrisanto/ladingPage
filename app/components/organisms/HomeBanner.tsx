@@ -1,4 +1,5 @@
 import Form from "../molecules/Form";
+import Image from "next/image";
 
 interface HomeBannerProps {
     data: any; // Reemplázalo con un tipo más preciso si tienes la estructura
@@ -17,11 +18,22 @@ interface HomeBannerProps {
   
     return (
       <section
-        className="home_banner"
+        className="home_banner relative"
         style={{
           backgroundImage: imgBanner ? `url(${imgBanner})` : undefined,
         }}
       >
+        <div className="container__img-banner md:hidden">
+            <Image 
+               className="img__banner h-[50vh]"
+               priority src={imgBanner} 
+               width={120} 
+               height={70} 
+               alt="imgagen-banner"   
+               quality={100} // Asegura la mejor calidad posible        
+            />
+        </div>
+
         <div className="home__banner-content-principal">
           <div className="home_banner-content">
             <h1 className="title__home-banner p-4 text-white bg-secundary">{data?.title}</h1>

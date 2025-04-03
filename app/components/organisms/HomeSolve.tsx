@@ -64,31 +64,34 @@ const HomeSolve = ({ data }: HomeBannerProps) => {
 
       {/* Contenedor con Scroll SOLO en Mobile, SIN Scroll en Desktop */}
       <div
-        ref={scrollRef}
-        className="flex w-full overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar lg:flex lg:flex-wrap lg:justify-center lg:gap-6 lg:overflow-visible"
-        onScroll={checkScroll}
-      >
-        {data.card.map((item: CardItem, index: number) => (
-          <div
-            key={index}
-            className="w-full min-w-full bg-white shadow-md rounded-xl p-6 border border-gray-200 hover:shadow-lg transition duration-300 snap-center lg:w-[calc(33.333%_-_24px)] lg:min-w-[300px] lg:flex-grow"
-          >
-            {/* Contenedor en fila para los dos span */}
-            <div className="flex justify-center items-center mb-2 text-primary">
-              <span className="title__card-home-solve text-sm font-bold">{item.title}</span>
-              {/* Solo muestra el icono si item.text existe */}
-              {item.text && <EqualIcon />}
-              <span className="text__card-home-solve text-sm font-bold sm:text-md">{item.text}</span>
-            </div>
-
-            {/* Línea divisoria */}
-            <hr className="border-primary mb-2" />
-
-            {/* Descripción */}
-            <p className="description__card-home-solve text-gray-700">{item.description}</p>
-          </div>
-        ))}
+  ref={scrollRef}
+  className="flex w-full overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar 
+  md:flex-wrap md:justify-center md:gap-6 md:overflow-visible"
+  onScroll={checkScroll}
+>
+  {data.card.map((item: CardItem, index: number) => (
+    <div
+      key={index}
+      className="w-[90%] min-w-[90%] md:w-[calc(33.333%_-_24px)] md:min-w-[300px] 
+      flex-shrink-0 bg-white shadow-md rounded-xl p-6 border border-gray-200 
+      hover:shadow-lg transition duration-300 snap-center"
+    >
+      {/* Contenedor en fila para los dos span */}
+      <div className="flex justify-center items-center mb-2 text-primary">
+        <span className="title__card-home-solve text-sm font-bold">{item.title}</span>
+        {item.text && <EqualIcon />}
+        <span className="text__card-home-solve text-sm font-bold sm:text-md">{item.text}</span>
       </div>
+
+      {/* Línea divisoria */}
+      <hr className="border-primary mb-2" />
+
+      {/* Descripción */}
+      <p className="description__card-home-solve text-gray-700">{item.description}</p>
+    </div>
+  ))}
+</div>
+
 
       {/* Flecha Derecha (Solo en Mobile) */}
       {showRightArrow && (
@@ -104,3 +107,4 @@ const HomeSolve = ({ data }: HomeBannerProps) => {
 };
 
 export default HomeSolve;
+

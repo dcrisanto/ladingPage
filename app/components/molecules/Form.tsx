@@ -32,7 +32,7 @@ const Form = () => {
       </p>
 
       {/* Formulario */}
-      <form onSubmit={handleSubmit(onSubmit)} className="container__form space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="container__form space-y-2">
         {/* Company Name */}
         <div>
           <label className="text__label block font-medium text-primary">{form.name.label}</label>
