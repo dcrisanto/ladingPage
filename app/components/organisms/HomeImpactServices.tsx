@@ -17,27 +17,27 @@ const HomeImpactServices = ({ data }: HomeBannerProps) => {
     const baseApi = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     return(
-        <section className="home_impact-services flex flex-col p-12 w-full">
-            <p className="text-white text-center text-2xl font-bold mb-6">{data.title}</p>
+        <section className="section__home-impact-services">
+            <div className="overlay"></div> {/* Este es el overlay */}
+            <p className="title__home-impact-services">{data.title}</p>
         
-            <div className="flex flex-wrap justify-center gap-5">
+            <div className="cards__home-impact-services">
             {data.card.map((item: CardItem, index: number) => (
                 <div
                 key={index}
-                className="flex flex-col items-center text-center p-4 bg-white/10 w-[35%] md:w-1/5 border-2 border-white"
+                className="card__home-impact-services"
                 >
                 {item.image && item.image.url && (
                     <Image
-                    className="mb-2 icon-card"
-                    style={{ objectFit: "contain" }}
+                    className="icon__card-home-impact-services"
                     priority
                     src={`${baseApi}${item.image.url}`}
                     width={50}
                     height={50}
-                    alt={item.title || "Logo"}
+                    alt={item.title || "icon"}
                     />
                 )}
-                <p className="text-white font-bold">{item.title}</p>
+                <p className="title__card-home-impact-services">{item.title}</p>
                 </div>
             ))}
             </div>

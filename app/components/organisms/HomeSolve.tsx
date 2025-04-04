@@ -28,6 +28,9 @@ const HomeSolve = ({ data }: HomeBannerProps) => {
 
   return (
     <section className="section__home_problems_solve">
+      <svg className="icon__top-left" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" />
+      </svg>
       {/* Título */}
       <p className="title__home-problems-solve">{data.title}</p>
 
@@ -43,9 +46,6 @@ const HomeSolve = ({ data }: HomeBannerProps) => {
                 {item.text && <EqualIcon />}
                 <span className="text__card-home-solve">{item.text}</span>
               </div>
-
-              {/* Línea divisoria */}
-          {/*     <hr className="line" /> */}
 
               {/* Descripción */}
               <p className="description__card-home-solve">{item.description}</p>

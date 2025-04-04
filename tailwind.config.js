@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#2F62AD',
-        secundary: '#1A3666',
+        secondary: '#1A3666',
         terciary: '#2F62AD1F',   
         warning: '#DCE6D3',
         success: '#093F51',
@@ -23,7 +23,7 @@ module.exports = {
       },
       fontFamily: {
         primary: ['var(--font-axiforma)'],
-        secundary: ['var(--font-inter)'],
+        secondary: ['var(--font-inter)'],
         montserrat: ['var(--font-montserrat)'],
       },
       screens: {

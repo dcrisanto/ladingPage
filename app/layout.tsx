@@ -26,9 +26,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html> 
-      <body> 
+      <body className="w-full"> 
         <GeneralsProvider generals={generals}> 
-          <Navbar /> 
+   {/*        <Navbar />  */}
           {children}
         </GeneralsProvider>
       </body>

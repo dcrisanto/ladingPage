@@ -1,104 +1,124 @@
+/* 🌍 Sección principal */
 .section__home_problems_solve {
-    @apply w-full items-center justify-center pt-4 m-2
-}   
+    @apply w-full flex flex-col items-center justify-center pt-4 m-2 bg-white min-h-[400px] lg:min-h-[500px] py-10;
+    overflow-x: hidden; /* Evita scroll horizontal en la sección */
+}
 
+.section__home_problems_solve::before {
+    content: "";
+    @apply absolute top-0 left-0 w-[120px] h-[80px] bg-[#E9EDF5]; /* Color de fondo */
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%); /* Triángulo */
+}
+
+.icon__top-left {
+    @apply absolute top-3 left-3 w-6 h-6 text-[#0E2B5C]; /* Tamaño y color del icono */
+}
+
+/* 🎯 Título principal de la sección */
+.title__home-problems-solve {
+    @apply text-secondary pb-2 text-[24px] font-bold text-center;
+}
+
+/* 📌 Contenedor de las tarjetas */
+.cards__home-problems-solve {
+    @apply flex overflow-x-auto space-x-4 p-4;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    max-width: 100%;
+}
+
+/* 🔹 Tarjetas individuales */
 .card__home-problems-solve {
-    @apply flex flex-col justify-center items-center p-8 border border-gray-200 shadow-md
+    @apply flex flex-col justify-center items-center p-6 border border-gray-200 shadow-md bg-white rounded-lg;
+    flex-shrink: 0;
+    scroll-snap-align: center;
 }
 
+/* 🏷️ Contenedor del título de la tarjeta */
 .container__title-card {
-    @apply w-full flex justify-center items-center mb-4 pb-2 text-center border-b-2 border-primary
+    @apply w-full flex justify-center items-center mb-4 pb-2 text-center border-b-2 border-primary;
 }
 
-.title__home-problems-solve, .description__card-home-solve {
-    @apply text-secundary pb-2
+/* 📝 Descripción */
+.description__card-home-solve {
+    @apply text-secondary text-[16px] pb-2;
 }
 
+/* 🌟 Títulos y texto de la tarjeta */
 .title__card-home-solve, .text__card-home-solve {
-    @apply text-primary
+    @apply text-primary font-semibold text-[18px];
 }
 
+/* 🎨 Ícono dentro de la tarjeta */
 .container__icon {
-    @apply flex justify-center p-2 bg-primary rounded-full m-2
+    @apply flex justify-center p-2 bg-primary text-white rounded-full m-2;
 }
 
+/* 📱 Mobile: Cards más pequeñas y deslizables */
 @screen phone {
-    .section__home_problems_solve {
-        @apply flex flex-col relative w-full overflow-hidden; /* Evitar que la sección general se desborde */
-    }   
-
-    .title__home-problems-solve {
-        @apply text-[18px]
-    }
-
-    .title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
-        @apply text-[14px]
-    }
     .cards__home-problems-solve {
-        @apply flex overflow-x-auto space-x-4 p-2;
-        scrollbar-width: none; /* Ocultar la barra de desplazamiento */
-        -webkit-overflow-scrolling: touch; /* Mejorar la experiencia de scroll en dispositivos táctiles */
-    }
-
-    .cards__home-problems-solve::-webkit-scrollbar {
-        display: none; /* Ocultar la barra de desplazamiento */
+        @apply flex-nowrap px-4; /* Agrega padding a los lados */
     }
 
     .card__home-problems-solve {
-        @apply max-w-md flex-shrink-0; /* Evitar que las cards se agranden */
+        @apply w-[80%]; /* Ocupar 80% del ancho */
+    }
+
+    .title__home-problems-solve {
+        @apply text-[18px];
+    }
+
+    .title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
+        @apply text-[14px];
     }
 }
 
+/* 📲 Tablet: Mostrar 2 cards en pantalla */
 @screen tablet {
-    .section__home_problems_solve {
-        @apply flex
-    }   
-
     .cards__home-problems-solve {
-        @apply flex justify-evenly overflow-visible
-    }
-
-    .title__home-problems-solve {
-        @apply text-[32px]
-    }
-
-    .title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
-        @apply text-[16px]
+        @apply justify-start space-x-4 overflow-x-auto;
     }
 
     .card__home-problems-solve {
-        @apply w-auto
-    }
-}
-
-@screen tabletxl {
-
-    .cards__home-problems-solve {
-        @apply w-full justify-around
-    }
-}
-
-@screen laptop {
-
-        .cards__home-problems-solve {
-            @apply justify-center gap-20
-        }
-}
-
-@screen desktop {
-
-    .cards__home-problems-solve {
-        @apply justify-center
+        @apply w-[45%]; /* 2 cards en pantalla */
     }
 
     .title__home-problems-solve {
-        @apply text-[40px]
+        @apply text-[28px];
     }
 
-    ..title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
-        @apply text-[22px]
+    .title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
+        @apply text-[16px];
     }
 }
 
+/* 🖥 Laptop */
+@screen laptop {
+    .cards__home-problems-solve {
+        @apply justify-center gap-8;
+    }
 
+    .card__home-problems-solve {
+        @apply w-[30%] max-w-[350px] flex-grow-0; /* Limita el tamaño en pantallas grandes */;
+    }
+}
 
+/* 🖥️ Desktop */
+@screen desktop {
+    .cards__home-problems-solve {
+        @apply justify-center;
+    }
+
+    .card__home-problems-solve {
+        @apply max-w-[400px] gap-16; /* Aumenta un poco el tamaño, pero sin exagerar */
+    }
+
+    .title__home-problems-solve {
+        @apply text-[40px];
+    }
+
+    .title__card-home-solve, .text__card-home-solve, .description__card-home-solve {
+        @apply text-[22px];
+    }
+}
