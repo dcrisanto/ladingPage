@@ -28,7 +28,6 @@ export default async function Home() { //{ home }: HomeProps
   
 
   return (
-   <>
           <main className="">
         {/*    <HomeBanner data={homeData.home_banner} /> */}
             <HomeSolve data={homeData.home_problems_solve} />
@@ -37,11 +36,6 @@ export default async function Home() { //{ home }: HomeProps
             <HomeServices data={homeData.home_services} />
             <HomeSpecialized data={homeData.home_specialized} /> */}
           </main>
-      
-        <footer className="flex gap-6 flex-wrap items-center justify-center">
-          <span>footer</span>
-        </footer>
-    </>
   
   );
 }

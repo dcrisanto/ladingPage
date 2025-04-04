@@ -16,7 +16,7 @@ export interface GeneralData {
   pixel_facebook: string;
   tag_manager: string;
   facebook_id: string;
-  social_network: SocialNetwork[];
+  social_networks: SocialNetwork[];
   logo: Logo;
 }
 
