@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../molecules/index.css';
-@import '../organisms/index.css';
-@import '../atoms/index.css';
+@import './molecules/index.css';
+@import './organisms/index.css';
+@import './atoms/index.css';
+@import './ui/index.css';
+@import 'icons.css';
+@import 'scale.css';
 
 * {
   box-sizing: border-box;

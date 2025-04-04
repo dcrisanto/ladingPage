@@ -10,12 +10,12 @@ export interface HomeData {
   updatedAt: string;
   publishedAt: string;
   home_banner: HomeBanner;
+  home_map: HomeMap;
   /*   home_companies: IHomeCompanies;
   home_services: HomeServices;
   home_projects: HomeProjects;
   home_choose: HomeChoose;
   home_about: HomeAbout;
-  home_map: HomeMap;
   Seo: MetaSEO; */
 }
 
@@ -30,6 +30,13 @@ export interface HomeBanner {
   video_tablet: Media;
   video_mobile: Media;
   pre_title: string; */
+}
+
+export interface HomeMap {
+  id: number;
+  title: string;
+  text: string;
+  cities: string;
 }
 
 /* export interface IHomeCompanies {

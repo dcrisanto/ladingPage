@@ -1,0 +1,53 @@
+.footer {
+    height: 240px;
+    @apply bg-terciary px-4
+}
+
+.footer__container {
+    @apply h-full text-white
+}
+
+.container__socials {
+    @apply flex justify-end gap-4
+}
+
+.contact__item-link-icon {
+    @apply text-[14px] pr-4
+}
+
+.contact__item-link-icon {
+    @apply text-[24px]
+}
+
+@screen phone {
+
+    .footer__container {
+        @apply flex flex-col justify-around
+    }
+
+    .contact__info {
+        @apply flex flex-col gap-4
+    }
+
+    .address__contact, .phone__contact, .email__contact {
+        @apply text-[14px]
+    }
+}
+
+@screen tablet {
+
+    .footer__container {
+        @apply flex flex-row items-center
+    }
+
+    .contact__info {
+        @apply flex-row 
+    }
+
+    .address__contact, .phone__contact, .email__contact {
+        @apply text-[18px]
+    }
+}
+
+
+

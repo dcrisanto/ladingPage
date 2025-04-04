@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/styles/ui/globals.css";
+import "@/styles/globals.css";
 import { getGenerals } from "@/lib/getGenerals"; // Importamos la función de datos
 import { Navbar } from "./components/molecules";
 import { GeneralsProvider } from "./context/generals.context";
+import { Footer } from "./components/ui/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <GeneralsProvider generals={generals}> 
    {/*        <Navbar />  */}
           {children}
+          <Footer />
         </GeneralsProvider>
       </body>
     </html>
