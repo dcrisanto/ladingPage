@@ -1,16 +1,12 @@
 import HomeBanner from "./components/organisms/HomeBanner";
 import HomeImpactServices from "./components/organisms/HomeImpactServices";
+import { HomeMap } from "./components/organisms/HomeMap";
 import HomeServices from "./components/organisms/HomeServices";
 import HomeSolve from "./components/organisms/HomeSolve";
 import HomeSpecialized from "./components/organisms/HomeSpecialized";
 /* import { HomeData } from "./interfaces/home";
  */
 const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
-
-/* interface HomeProps {
-  home: HomeData
-} */
-
 
 export default async function Home() { //{ home }: HomeProps
 
@@ -23,8 +19,6 @@ export default async function Home() { //{ home }: HomeProps
   }
   
   const { data: homeData } = await res.json();
-
-  console.log(homeData);
   
 
   return (
@@ -32,6 +26,10 @@ export default async function Home() { //{ home }: HomeProps
         {/*    <HomeBanner data={homeData.home_banner} /> */}
             <HomeSolve data={homeData.home_problems_solve} />
             <HomeImpactServices data={homeData.home_impact_services} />
+            <HomeMap 
+              title={homeData.home_map.title}
+              list={homeData.home_map.list}
+            />
       {/*       <HomeImpactServices data={homeData.home_impact_services} />
             <HomeServices data={homeData.home_services} />
             <HomeSpecialized data={homeData.home_specialized} /> */}

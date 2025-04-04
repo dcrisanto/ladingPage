@@ -1,0 +1,135 @@
+.section_home-map {
+    height: auto;
+    min-height: 500px; 
+    @apply w-full items-center my-20
+}
+
+.container__home-map {
+    width: 95%;
+}
+
+.map__home-map {
+    min-height: 400px; 
+    @apply w-full h-full
+}
+
+.title__services {
+    @apply text-primary
+}
+
+.homeMap__Area-list {
+    font-size: calc(1.9rem * var(--scale));
+    height: calc(26rem * var(--scale));
+    margin-top: calc(1rem * var(--scale));
+    height: auto; 
+    overflow-y: auto; 
+    @apply border border-primary p-4
+}
+
+.container__home-services-areas {
+    width: 320px;
+  /*   height: 500px; */
+    min-height: 300px;
+    height: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    @apply flex flex-col items-center justify-center h-auto
+}
+
+.container__title-icon-services {
+    @apply w-full flex flex-row gap-3 justify-around items-center
+}
+
+.container__icon-services {
+    width: 40px;
+    height: 40px;
+    @apply flex justify-center items-center bg-primary
+}
+
+.homeMap__Area-list {
+    width: 320px;
+    height: 350px;
+}
+
+.homeMap__Area-list ul {
+    @apply list-disc list-inside text-base text-primary pl-8 text-[14px];
+  }
+  
+  .homeMap__Area-list li {
+    @apply mb-2;
+  }
+
+
+@screen phone {
+    .section_home-map {
+        @apply flex flex-col
+    }
+
+    .container__home-services-areas {
+        @apply p-4 m-2
+    }
+
+    .container__home-map {
+        @apply pt-6
+    }
+
+    .map__home-map {
+        height: 500px;
+    }
+    .title__services {
+        @apply text-[18px]
+    }
+    .homeMap__Area-list {
+       width: 230px;
+       height: 180px;
+    }
+
+}
+
+@screen tablet {
+    .section_home-map {
+        height: 500px; 
+      @apply flex-row-reverse items-start px-8 items-stretch; /* mapa a la izquierda, info a la derecha */
+    }
+  
+    .container__home-map {
+        height: 500px;
+      @apply w-3/5;
+    }
+  
+    .container__home-services-areas {
+      @apply w-2/5 bg-white shadow-lg justify-start;
+    }
+    .homeMap__Area-list {
+        height: 100%;
+        overflow-y: auto; /* Scroll si se excede */
+        @apply w-full overflow-y-auto h-full;
+      }
+  }
+
+  @screen tabletxl {
+    .section_home-map {
+        @apply flex justify-center items-start gap-8;
+      }
+
+    .container__home-services-areas {
+        @apply w-2/5 h-auto max-h-[500px] overflow-y-auto;
+      }
+
+      .container__home-map {
+        width: 60%; /* puedes ajustar según el diseño */
+      }
+    
+      .container__home-services-areas {
+        width: 280px; /* más angosto que antes */
+      }
+    
+      .homeMap__Area-list {
+        width: 100%; /* para que se ajuste al nuevo contenedor */
+        height: 100%;
+        @apply overflow-y-auto;
+      }
+
+      .title__services {
+        @apply text-[32px]
+      }
+  }
