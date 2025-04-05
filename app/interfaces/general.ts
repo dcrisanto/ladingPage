@@ -45,3 +45,8 @@ export interface SocialNetwork {
   type: string;
   url: string;
 }
+
+export interface Icon {
+  width?: number;
+  height?: number;
+}

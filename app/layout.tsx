@@ -1,10 +1,10 @@
-import "@/styles/globals.css";
+import "./styles/globals.css";
 import { getGenerals } from "@/lib/getGenerals"; // Importamos la función de datos
 import { Navbar } from "./components/molecules";
 import { GeneralsProvider } from "./context/generals.context";
-import { Footer } from "./components/ui/Footer";
 import Head from "next/head";
 import { Metadata } from "next";
+import { Footer } from "./components/ui/Footer";
 
 export const metadata: Metadata = {
   title: "Brightview",

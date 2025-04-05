@@ -1,11 +1,18 @@
 import Head from "next/head";
+import Cover from "./components/organisms/Cover";
 import HomeBanner from "./components/organisms/HomeBanner";
 import HomeImpactServices from "./components/organisms/HomeImpactServices";
 import { HomeMap } from "./components/organisms/HomeMap";
 import HomeServices from "./components/organisms/HomeServices";
 import HomeSolve from "./components/organisms/HomeSolve";
 import HomeSpecialized from "./components/organisms/HomeSpecialized";
+import ImpactOurServices from "./components/organisms/ImpactOurServices";
+import ProblemsWeSolve from "./components/organisms/ProblemsWeSolve";
+import Projects from "./components/organisms/Projects";
+import Services from "./components/organisms/Services";
+import SpecializedServices from "./components/organisms/SpecializedServices";
 import Header from "./components/ui/Header";
+
 /* import { HomeData } from "./interfaces/home";
  */
 const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
@@ -26,6 +33,12 @@ export default async function Home() {
   return (
     <main className="">
       <Header />
+      <Cover />
+      <ProblemsWeSolve />
+      <ImpactOurServices />
+      <Services />
+      <SpecializedServices />
+      <Projects />
       {/*    <HomeBanner data={homeData.home_banner} /> */}
       {/*  <HomeSolve data={homeData.home_problems_solve} />
             <HomeImpactServices data={homeData.home_impact_services} />
