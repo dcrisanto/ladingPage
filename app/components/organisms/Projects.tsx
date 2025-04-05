@@ -109,8 +109,8 @@ export default function Projects() {
               }
             }}
             className={cn(
-              "flex h-[40px] w-[40px] cursor-pointer items-center justify-center border border-[2px] border-solid border-[#ffffff80] transition-all duration-300 hover:scale-[1.04]",
-              selectedProject > 0 && "border-white",
+              "flex h-[40px] w-[40px] cursor-pointer items-center justify-center border border-[2px] border-solid border-[#ffffff80] transition-all duration-300",
+              selectedProject > 0 && "border-white hover:scale-[1.04]",
             )}
           >
             <div className="rotate-180">
@@ -124,8 +124,9 @@ export default function Projects() {
               }
             }}
             className={cn(
-              "flex h-[40px] w-[40px] cursor-pointer items-center justify-center border border-[2px] border-solid border-[#ffffff80] transition-all duration-300 hover:scale-[1.04]",
-              selectedProject < options?.length - 1 && "border-white",
+              "flex h-[40px] w-[40px] cursor-pointer items-center justify-center border border-[2px] border-solid border-[#ffffff80] transition-all duration-300",
+              selectedProject < options?.length - 1 &&
+                "border-white hover:scale-[1.04]",
             )}
           >
             <RightIcon

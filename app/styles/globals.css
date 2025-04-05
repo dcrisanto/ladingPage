@@ -15,8 +15,8 @@
 
 @font-face {
   font-family: "Outfit";
-  src: url("/fonts/Outfit-Light.otf") format("opentype");
-  font-weight: 300;
+  src: url("/fonts/Outfit-SemiBold.otf") format("opentype");
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -36,8 +36,22 @@
 
 @font-face {
   font-family: "Outfit";
-  src: url("/fonts/Outfit-SemiBold.otf") format("opentype");
-  font-weight: 600;
+  src: url("/fonts/Outfit-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/fonts/Outfit-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/fonts/Outfit-Thin.otf") format("opentype");
+  font-weight: 100;
   font-style: normal;
 }
 

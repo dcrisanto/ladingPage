@@ -9,6 +9,7 @@ import HomeSpecialized from "./components/organisms/HomeSpecialized";
 import ImpactOurServices from "./components/organisms/ImpactOurServices";
 import ProblemsWeSolve from "./components/organisms/ProblemsWeSolve";
 import Projects from "./components/organisms/Projects";
+import QuickContactForm from "./components/organisms/QuickContactForm";
 import Services from "./components/organisms/Services";
 import SpecializedServices from "./components/organisms/SpecializedServices";
 import Header from "./components/ui/Header";
@@ -39,6 +40,7 @@ export default async function Home() {
       <Services />
       <SpecializedServices />
       <Projects />
+      <QuickContactForm />
       {/*    <HomeBanner data={homeData.home_banner} /> */}
       {/*  <HomeSolve data={homeData.home_problems_solve} />
             <HomeImpactServices data={homeData.home_impact_services} />
