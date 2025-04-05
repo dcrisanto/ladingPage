@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './molecules/index.css';
-@import './organisms/index.css';
-@import './atoms/index.css';
-@import './ui/index.css';
-@import 'icons.css';
-@import 'scale.css';
+@import "./molecules/index.css";
+@import "./organisms/index.css";
+@import "./atoms/index.css";
+@import "./ui/index.css";
+@import "icons.css";
+@import "scale.css";
 
 * {
   box-sizing: border-box;
@@ -16,11 +16,6 @@
 }
 
 html {
-  font-size: 62.5%;
-  font-family: 'DM Sans', sans-serif;
-/*   overflow-x: hidden; */
-}
-
-body {
-/*   overflow-x: hidden; */
+  font-family: "DM Sans", sans-serif;
+  /*   overflow-x: hidden; */
 }
