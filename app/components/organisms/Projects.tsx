@@ -29,6 +29,7 @@ export default function Projects() {
 
   return (
     <div
+      id="proyects"
       className="relative mb-10 bg-[#2f62ad1f] pb-16"
       style={{
         clipPath: "polygon(100% 0, 100% 92%, 97% 100%, 0 100%, 0 0)",

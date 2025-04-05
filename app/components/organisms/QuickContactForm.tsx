@@ -13,7 +13,7 @@ export default function QuickContactForm() {
   const [notes, setNotes] = useState("");
 
   return (
-    <div className="bg-[#1a3666] px-28 py-16">
+    <div id="contact-us" className="bg-[#1a3666] px-28 py-16">
       <div
         className="grid"
         style={{

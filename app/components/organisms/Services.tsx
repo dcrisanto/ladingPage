@@ -67,7 +67,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="mb-10">
+    <div className="mb-10" id="services">
       <p className="mb-12 mt-20 text-center text-3xl font-semibold text-[#1A3666]">
         Services
       </p>

@@ -13,6 +13,7 @@
     "clsx": "^2.1.1",
     "globals": "~15.11.0",
     "lucide-react": "^0.485.0",
+    "motion": "^12.6.3",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-datepicker": "^8.2.1",
