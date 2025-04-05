@@ -1,6 +1,8 @@
 "use client";
 
+import RightIcon from "@/app/icons/RightIcon";
 import Star from "@/app/icons/Star";
+import { cn } from "@/app/utils";
 import Image from "next/image";
 import React, { useState } from "react";
 import after1 from "../../../public/images/projects/after1.png";
@@ -11,14 +13,17 @@ import before2 from "../../../public/images/projects/before2.png";
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
 
+  // before = #1A3666
+  //
+
   const options = [
     {
-      before: "",
-      after: "",
+      before: before1,
+      after: after1,
     },
     {
-      before: "",
-      after: "",
+      before: before2,
+      after: before2,
     },
   ];
 
@@ -51,6 +56,85 @@ export default function Projects() {
           Transform Your Business Space with Us! Explore some of our successful
           cleaning projects:
         </p>
+      </div>
+      <div
+        className="mt-10 grid px-28"
+        style={{
+          gridTemplateColumns: "1fr 100px",
+        }}
+      >
+        <div className="grid flex-1 grid-cols-2">
+          <div className="relative">
+            <div className="">
+              <div className="text- absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
+                Before
+              </div>
+            </div>
+            <div>
+              <Image
+                src={options[selectedProject].before}
+                alt=""
+                style={{
+                  objectFit: "cover",
+                  height: "100%",
+                  width: "100%",
+                }}
+              />
+            </div>
+          </div>
+          <div className="relative">
+            <div className="">
+              <div className="text- absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
+                After
+              </div>
+            </div>
+            <div>
+              <Image
+                src={options[selectedProject].after}
+                alt=""
+                style={{
+                  objectFit: "cover",
+                  height: "100%",
+                  width: "100%",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center bg-[#2F62AD]">
+          <div
+            onClick={() => {
+              if (selectedProject > 0) {
+                setSelectedProject(selectedProject - 1);
+              }
+            }}
+            className={cn(
+              "flex h-[40px] w-[40px] cursor-pointer items-center justify-center border border-[2px] border-solid border-[#ffffff80] transition-all duration-300 hover:scale-[1.04]",
+              selectedProject > 0 && "border-white",
+            )}
+          >
+            <div className="rotate-180">
+              <RightIcon color={selectedProject > 0 ? "white" : "#ffffff80"} />
+            </div>
+          </div>
+          <div
+            onClick={() => {
+              if (selectedProject < options?.length - 1) {
+                setSelectedProject(selectedProject + 1);
+              }
+            }}
+            className={cn(
+              "flex h-[40px] w-[40px] cursor-pointer items-center justify-center border border-[2px] border-solid border-[#ffffff80] transition-all duration-300 hover:scale-[1.04]",
+              selectedProject < options?.length - 1 && "border-white",
+            )}
+          >
+            <RightIcon
+              color={
+                selectedProject < options?.length - 1 ? "white" : "#ffffff80"
+              }
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
