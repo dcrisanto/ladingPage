@@ -41,11 +41,17 @@ export interface IHomeMap {
 export interface IHomeAbout {
   id?: string;
   title: string;
-  img_desktop: Picture;
+  desktopImage: Picture;
   description: string;
   title_values: string;
-  card_values: Card[];
-  card_team: Card[];
+  valuesCards: Card[];
+  meetOurTeam: IMeetOurTeam;
+}
+
+export interface IMeetOurTeam {
+  id?: string;
+  title: string;
+  images: Picture[];
 }
 
 /* export interface IHomeCompanies {
