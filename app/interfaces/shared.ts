@@ -20,6 +20,13 @@ export interface Picture {
   updatedAt: Date;
 }
 
+export interface Card {
+  title: string;
+  text: string;
+  description: string;
+  image: Picture;
+}
+
 export interface InputForm {
   id: number;
   name: string;

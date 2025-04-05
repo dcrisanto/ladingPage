@@ -1,4 +1,4 @@
-import { MetaSEO, Picture } from "./shared";
+import { Card, MetaSEO, Picture } from "./shared";
 
 export interface IHome {
   data: HomeData;
@@ -10,7 +10,7 @@ export interface HomeData {
   updatedAt: string;
   publishedAt: string;
   home_banner: HomeBanner;
-  home_map: HomeMap;
+  home_map: IHomeMap;
   /*   home_companies: IHomeCompanies;
   home_services: HomeServices;
   home_projects: HomeProjects;
@@ -32,11 +32,20 @@ export interface HomeBanner {
   pre_title: string; */
 }
 
-export interface HomeMap {
-  id: number;
+export interface IHomeMap {
+  id?: string;
   title: string;
-  text: string;
-  cities: string;
+  list: string;
+}
+
+export interface IHomeAbout {
+  id?: string;
+  title: string;
+  img_desktop: Picture;
+  description: string;
+  title_values: string;
+  card_values: Card[];
+  card_team: Card[];
 }
 
 /* export interface IHomeCompanies {

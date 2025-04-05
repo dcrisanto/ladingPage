@@ -1,19 +1,20 @@
+import { Card, Picture } from "@/app/interfaces/shared";
 import Image from "next/image";
 
-interface HomeBannerProps {
+interface HomeImpactServicesProps {
     data: any; // Reemplázalo con un tipo más preciso si tienes la estructura
   }
 
   interface CardItem {
-    title: string;
-    text: string;
-    description: string;
-    image: any
+     title: string;
+     text: string;
+     description: string;
+     image: Picture;
   }
 
 
-const HomeImpactServices = ({ data }: HomeBannerProps) => {
-    console.log(data.card);
+const HomeImpactServices = ({ data }: HomeImpactServicesProps) => {
+    console.log(data);
     const baseApi = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     return(

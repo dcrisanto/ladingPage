@@ -1,3 +1,4 @@
+import { HomeAbout } from "./components/organisms/HomeAbout";
 import HomeBanner from "./components/organisms/HomeBanner";
 import HomeImpactServices from "./components/organisms/HomeImpactServices";
 import { HomeMap } from "./components/organisms/HomeMap";
@@ -10,7 +11,7 @@ const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 export default async function Home() { //{ home }: HomeProps
 
-  const res = await fetch(`${API_URL}/api/home?populate[home_banner][populate]=*&populate[home_problems_solve][populate]=*&populate[home_impact_services][populate][card][populate]=image&populate[home_services][populate][card][populate]=image&populate[home_specialized][populate][card][populate]=image&populate&populate[home_about][populate]=*&populate[home_projects][populate]=*&populate[home_testimonials][populate]=*&populate[home_contact][populate]=*&populate[home_map][populate]=*`, {
+  const res = await fetch(`${API_URL}/api/home?populate[home_banner][populate]=*&populate[home_problems_solve][populate]=*&populate[home_impact_services][populate][card][populate]=image&populate[home_services][populate][card][populate]=image&populate[home_specialized][populate][card][populate]=image&populate[home_about][populate][card_values][populate]=image&populate[home_about][populate]=img_desktop&populate[home_projects][populate]=*&populate[home_testimonials][populate]=*&populate[home_contact][populate]=*&populate[home_map][populate]=*`, {
     cache: "no-store", // O usa "force-cache" si quieres revalidar con ISR
   });
   
@@ -26,6 +27,7 @@ export default async function Home() { //{ home }: HomeProps
         {/*    <HomeBanner data={homeData.home_banner} /> */}
             <HomeSolve data={homeData.home_problems_solve} />
             <HomeImpactServices data={homeData.home_impact_services} />
+            <HomeAbout data={homeData.home_about} />
             <HomeMap 
               title={homeData.home_map.title}
               list={homeData.home_map.list}
