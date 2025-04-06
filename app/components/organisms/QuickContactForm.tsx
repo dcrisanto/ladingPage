@@ -13,23 +13,26 @@ export default function QuickContactForm() {
   const [notes, setNotes] = useState("");
 
   return (
-    <div id="contact-us" className="bg-[#1a3666] px-28 py-16">
+    <div
+      id="contact-us"
+      className="bg-[#1a3666] px-28 py-16 max-xl:px-16 max-[1100px]:px-8 max-[900px]:px-6"
+    >
       <div
-        className="grid"
+        className="grid max-[800px]:block"
         style={{
           gridTemplateColumns: "1fr 1.5fr",
         }}
       >
         <div
-          className="bg-[#2F62AD] px-12 pb-[140px] pt-[140px]"
+          className="bg-[#2F62AD] px-12 pb-[140px] pt-[140px] max-[900px]:px-6 max-[900px]:pb-[50px] max-[900px]:pt-[50px]"
           style={{
             clipPath: "polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 8%)",
           }}
         >
-          <p className="mb-[35px] text-3xl font-semibold text-white">
+          <p className="mb-[35px] text-3xl font-semibold text-white max-[900px]:mb-[20px] max-[900px]:text-center max-[900px]:text-2xl">
             Contact Us
           </p>
-          <p className="font-light text-white">
+          <p className="font-extralight text-white max-[900px]:text-center">
             Discover how our commercial cleaning solutions can enhance your
             business and create a healthier, more productive work environment!
           </p>
@@ -49,15 +52,15 @@ export default function QuickContactForm() {
           </div>
         </div>
         <div
-          className="bg-white px-12 pt-[80px]"
+          className="bg-white px-12 pt-[80px] max-[900px]:px-6 max-[900px]:pt-[50px]"
           style={{
-            clipPath: "polygon(100% 0, 100% 89%, 95% 100%, 0 100%, 0 0)",
+            clipPath: "polygon(100% 0, 100% 96%, 93% 100%, 0 100%, 0 0)",
           }}
         >
-          <p className="mb-[35px] text-3xl font-medium text-[#1A3666]">
+          <p className="mb-[35px] text-3xl font-medium text-[#1A3666] max-[900px]:text-center max-[900px]:text-2xl">
             Quick Contact Form
           </p>
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 gap-10 max-[900px]:grid-cols-1 max-[900px]:gap-4">
             <div className="flex flex-col gap-2">
               <p className="text-base font-light text-[#2F62AD]">
                 Company Name
@@ -87,7 +90,7 @@ export default function QuickContactForm() {
               />
             </div>
           </div>
-          <div className="mt-[30px] grid grid-cols-2 gap-10">
+          <div className="mt-[30px] grid grid-cols-2 gap-10 max-[900px]:mt-[20px] max-[900px]:grid-cols-1 max-[900px]:gap-4">
             <div className="flex flex-col gap-2">
               <p className="text-base font-light text-[#2F62AD]">
                 Phone Number
@@ -119,7 +122,7 @@ export default function QuickContactForm() {
               />
             </div>
           </div>
-          <div className="mt-[30px]">
+          <div className="mt-[30px] max-[900px]:mt-[20px]">
             <div className="flex flex-col gap-2">
               <p className="text-base font-light text-[#2F62AD]">
                 Additional Notes
@@ -136,8 +139,8 @@ export default function QuickContactForm() {
               />
             </div>
           </div>
-          <div className="mt-[30px] flex items-center justify-start">
-            <div className="flex h-[40px] w-[320px] items-center justify-center bg-[#2F62AD]">
+          <div className="mt-[30px] flex items-center justify-start pb-[30px] max-[900px]:mt-[20px] max-[900px]:w-full max-[900px]:pb-[60px]">
+            <div className="flex h-[40px] w-[320px] items-center justify-center bg-[#2F62AD] max-[900px]:w-full">
               <p className="font-medium text-white">Send</p>
             </div>
           </div>
