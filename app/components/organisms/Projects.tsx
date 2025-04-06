@@ -13,9 +13,6 @@ import before2 from "../../../public/images/projects/before2.png";
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(0);
 
-  // before = #1A3666
-  //
-
   const options = [
     {
       before: before1,
@@ -37,7 +34,7 @@ export default function Projects() {
     >
       <div className="relative">
         <div
-          className="absolute top-0 flex h-[120px] w-full items-center justify-end bg-[#2f62ad1f]"
+          className="absolute top-0 flex h-[120px] w-full items-center justify-end bg-[#2f62ad1f] max-[900px]:hidden"
           style={{
             clipPath: "polygon(52% 0, 100% 100%, 100% 0)",
           }}
@@ -46,32 +43,42 @@ export default function Projects() {
             <Star height={85} width={85} />
           </div>
         </div>
-        <div className="pt-20">
-          <p className="mb-8 text-center text-3xl font-semibold text-[#1A3666]">
+        <div
+          className="absolute top-0 flex hidden h-[90px] w-full items-center justify-end bg-[#2f62ad1f] max-[900px]:flex"
+          style={{
+            clipPath: "polygon(52% 0, 100% 100%, 100% 0)",
+          }}
+        >
+          <div className="h-[60px] w-[60px]">
+            <Star height={50} width={50} />
+          </div>
+        </div>
+        <div className="pt-20 max-[900px]:pt-14">
+          <p className="mb-8 text-center text-3xl font-semibold text-[#1A3666] max-[900px]:mb-6 max-[900px]:text-2xl">
             Projects
           </p>
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <p className="max-w-[400px] text-center font-light text-[#1A3666]">
+        <p className="text-center font-light text-[#1A3666] max-[900px]:max-w-[100vw] max-[900px]:max-w-[400px] max-[900px]:px-2">
           Transform Your Business Space with Us! Explore some of our successful
           cleaning projects:
         </p>
       </div>
       <div
-        className="mt-10 grid px-28"
+        className="mt-10 grid px-28 max-xl:px-16 max-[1100px]:px-10 max-[1000px]:block max-[900px]:px-6"
         style={{
           gridTemplateColumns: "1fr 100px",
         }}
       >
-        <div className="grid flex-1 grid-cols-2">
+        <div className="grid flex-1 grid-cols-2 max-[850px]:grid-cols-1">
           <div className="relative">
             <div className="">
               <div className="text- absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
                 Before
               </div>
             </div>
-            <div>
+            <div className="max-[850px]:max-h-[200px]">
               <Image
                 src={options[selectedProject].before}
                 alt=""
@@ -89,7 +96,7 @@ export default function Projects() {
                 After
               </div>
             </div>
-            <div>
+            <div className="overflow-hidden max-[850px]:max-h-[200px]">
               <Image
                 src={options[selectedProject].after}
                 alt=""
@@ -102,7 +109,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center bg-[#2F62AD]">
+        <div className="flex flex-col items-center justify-center bg-[#2F62AD] max-[1000px]:flex-row max-[1000px]:py-4">
           <div
             onClick={() => {
               if (selectedProject > 0) {

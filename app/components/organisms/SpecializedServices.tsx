@@ -5,6 +5,7 @@ import img1 from "../../../public/images/specializedServices/1.png";
 import img2 from "../../../public/images/specializedServices/2.png";
 import img3 from "../../../public/images/specializedServices/3.png";
 import img4 from "../../../public/images/specializedServices/4.png";
+import ServiceItem from "../molecules/specializedServices/ServiceItem";
 
 export default function SpecializedServices() {
   const services = [
@@ -75,64 +76,37 @@ export default function SpecializedServices() {
 
   return (
     <div
-      className="relative mb-10 mt-20 bg-[#2f62ad1f] pb-16 pt-20"
+      className="relative mb-10 mt-20 bg-[#2f62ad1f] pb-16 pt-20 max-[1000px]:pt-12"
       style={{
-        clipPath: "polygon(4% 0, 100% 0, 100% 100%, 0 100%, 0 7%)",
+        clipPath: "polygon(4% 0, 100% 0, 100% 100%, 0 100%, 0 4%)",
       }}
     >
-      <p className="mb-12 text-center text-3xl font-semibold text-[#1A3666]">
+      <p className="mb-12 text-center text-3xl font-semibold text-[#1A3666] max-[900px]:mb-8 max-[900px]:text-2xl">
         Specialized Cleaning Services
       </p>
-      <div className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 mx-28 flex gap-4 overflow-x-auto">
+      <div className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 mx-28 flex gap-4 overflow-x-auto max-xl:mx-12 max-[1100px]:mx-10 max-[1100px]:mx-6 max-[900px]:flex-col">
         {services.map((service, index) => (
-          <div key={index} className="group min-w-[380px] cursor-pointer">
-            <div className="relative h-[400px]">
-              <div className="absolute inset-0 z-[-5]">
-                <Image
-                  src={service.image}
-                  alt=""
-                  style={{
-                    objectFit: "cover",
-                    height: "100%",
-                    width: "100%",
-                  }}
-                />
-              </div>
-              <div className="h-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="absolute inset-0 z-[-1] bg-primary opacity-[0.8]" />
-                <div className="flex h-full flex-col items-center justify-center gap-4">
-                  {service.options.map((opt, index) => (
-                    <div key={index} className="flex items-start gap-3 px-10">
-                      <div className="mt-[9px]">
-                        <div className="h-[4px] w-[4px] rounded-full bg-white" />
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-light text-white">
-                          <span className="font-medium">{opt.subtitle}: </span>
-                          {opt.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-center bg-[#1A3666] py-5">
-              <p className="px-4 text-center font-medium text-white">
-                {service.title}
-              </p>
-            </div>
-          </div>
+          <ServiceItem service={service} key={index} />
         ))}
       </div>
       <div
-        className="absolute bottom-0 left-0 flex h-[360px] w-[120px] flex-col justify-end bg-[#2f62ad1f]"
+        className="absolute bottom-0 left-0 flex h-[360px] w-[120px] flex-col justify-end bg-[#2f62ad1f] max-[900px]:hidden"
         style={{
           clipPath: "polygon(0 0, 0% 100%, 100% 100%)",
         }}
       >
         <div className="h-[80px] w-[80px]">
           <Star height={80} width={80} />
+        </div>
+      </div>
+      <div
+        className="absolute bottom-0 left-0 flex hidden h-[360px] w-[120px] flex-col justify-end bg-[#2f62ad1f] max-[900px]:flex"
+        style={{
+          clipPath: "polygon(0 0, 0% 100%, 100% 100%)",
+        }}
+      >
+        <div className="h-[60px] w-[60px]">
+          <Star height={60} width={60} />
         </div>
       </div>
       <div
