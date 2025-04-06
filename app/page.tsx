@@ -1,4 +1,5 @@
 import Head from "next/head";
+import AboutUs from "./components/organisms/AboutUs";
 import Cover from "./components/organisms/Cover";
 import HomeBanner from "./components/organisms/HomeBanner";
 import HomeImpactServices from "./components/organisms/HomeImpactServices";
@@ -40,6 +41,7 @@ export default async function Home() {
       <ImpactOurServices />
       <Services />
       <SpecializedServices />
+      <AboutUs />
       <Projects />
       <Testimonials />
       <QuickContactForm />

@@ -2,6 +2,7 @@
 
 import Quote from "@/app/icons/Quote";
 import Star from "@/app/icons/Star";
+import { cn } from "@/app/utils";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import img from "../../../public/images/testimonial.png";
@@ -147,7 +148,7 @@ export default function Testimonials() {
   };
 
   return (
-    <div className="pb-[50px]">
+    <div className="relative pb-[50px]">
       <div className="relative">
         <div className="absolute top-0 h-[140px] w-full max-[900px]:hidden">
           <div className="h-[40px] w-[40px]">
@@ -159,7 +160,7 @@ export default function Testimonials() {
             <Star height={60} width={60} />
           </div>
         </div>
-        <div className="pt-20 max-[900px]:pt-14">
+        <div className="pt-20 max-[900px]:pt-10">
           <p className="mb-8 text-center text-3xl font-semibold text-[#2F62AD] max-[900px]:mb-6 max-[900px]:text-2xl">
             Testimonials
           </p>
@@ -173,7 +174,6 @@ export default function Testimonials() {
       </div>
       <div
         className="flex overflow-x-hidden py-3 max-[850px]:snap-x max-[850px]:snap-mandatory max-[850px]:overflow-x-auto"
-        id="carousel"
         ref={carouselRef}
       >
         {groupedTestimonials.map((group, i) => (
@@ -191,7 +191,12 @@ export default function Testimonials() {
                   MozBoxShadow: "0px 0px 6px -2px rgba(0,0,0,0.72)",
                 }}
               >
-                <div className="flex h-full w-[60px] justify-center bg-[#1A3666] pt-[20px]">
+                <div
+                  className={cn(
+                    "flex h-full w-[60px] justify-center bg-[#1A3666] pt-[20px]",
+                    index == 1 && "bg-[#2f62ad]",
+                  )}
+                >
                   <Quote />
                 </div>
                 <div className="flex-1 px-[24px] py-[35px] max-[850px]:px-[18px] max-[850px]:py-[25px]">
@@ -225,7 +230,7 @@ export default function Testimonials() {
           </div>
         ))}
       </div>
-      <div className="mt-[15px] flex flex-row items-center justify-center gap-4">
+      <div className="z-[10] mt-[15px] flex flex-row items-center justify-center gap-4">
         {groupedTestimonials.map((dot, index) => (
           <div
             onClick={() => {
@@ -233,7 +238,7 @@ export default function Testimonials() {
               scrollToGroup(index);
             }}
             key={index}
-            className="flex h-[14px] w-[14px] cursor-pointer items-center justify-center rounded-full bg-[#1A3666]"
+            className="z-[10] flex h-[14px] w-[14px] cursor-pointer items-center justify-center rounded-full bg-[#1A3666]"
           >
             {selectedStep === index && (
               <div className="h-[45%] w-[45%] rounded-full bg-white"></div>
@@ -241,6 +246,12 @@ export default function Testimonials() {
           </div>
         ))}
       </div>
+      <div
+        className="absolute bottom-0 left-0 z-[-100] flex h-[360px] w-[120px] flex-col justify-end bg-[#2f62ad1f] max-[900px]:flex"
+        style={{
+          clipPath: "polygon(0 0, 0% 100%, 100% 100%)",
+        }}
+      ></div>
     </div>
   );
 }

@@ -76,7 +76,7 @@ export default function SpecializedServices() {
 
   return (
     <div
-      className="relative mb-10 mt-20 bg-[#2f62ad1f] pb-16 pt-20 max-[1000px]:pt-12"
+      className="relative mt-20 bg-[#2f62ad1f] pb-16 pt-20 max-[1000px]:pt-12"
       style={{
         clipPath: "polygon(4% 0, 100% 0, 100% 100%, 0 100%, 0 4%)",
       }}
