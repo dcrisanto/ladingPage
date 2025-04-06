@@ -1,10 +1,10 @@
 "use client"; // Asegura que este componente se ejecute en el cliente
 import { useGenerals } from "@/app/context/generals.context";
 import Link from "next/link";
-import { Logo } from "../atoms/Logo";
 import { useState } from "react";
 //import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react"; // Íconos para el menú hamburguesa
+import { Logo } from "../atoms/Logo";
 
 /* interface NavbarProps {
   multilanguage: { menu: { id: number; label: string; url: string }[] };
@@ -47,26 +47,24 @@ export const Navbar = () => {
         </div>
       </div>
 
-        {/* Menú Mobile en posición absoluta */}
-        {isOpen && (
-            <div className="absolute top-full left-0 w-full bg-white shadow-lg border-t z-50">
-              <ul>
-                {multilanguage?.menu?.map(({ id, label, url }) => (
-                  <li key={id}>
-                    <Link
-                      href={url}
-                      className="block text-primary p-5 text-[16px] border-t border-black"
-                      onClick={() => setIsOpen(false)} // Cierra el menú al hacer clic
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+      {/* Menú Mobile en posición absoluta */}
+      {isOpen && (
+        <div className="absolute top-full left-0 w-full bg-white shadow-lg border-t z-50">
+          <ul>
+            {multilanguage?.menu?.map(({ id, label, url }) => (
+              <li key={id}>
+                <Link
+                  href={url}
+                  className="block text-primary p-5 text-[16px] border-t border-black"
+                  onClick={() => setIsOpen(false)} // Cierra el menú al hacer clic
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
-
-
