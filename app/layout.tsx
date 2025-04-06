@@ -1,10 +1,12 @@
 import "./styles/globals.css";
 import { getGenerals } from "@/lib/getGenerals"; // Importamos la función de datos
-import { Navbar } from "./components/molecules";
-import { GeneralsProvider } from "./context/generals.context";
-import Head from "next/head";
+
 import { Metadata } from "next";
-import { Footer } from "./components/ui/Footer";
+import Head from "next/head";
+import { Navbar } from "./components/molecules";
+import Footer from "./components/ui/Footer";
+import Header from "./components/ui/Header";
+import { GeneralsProvider } from "./context/generals.context";
 
 export const metadata: Metadata = {
   title: "Brightview",
@@ -30,9 +32,9 @@ export default async function RootLayout({
     <html>
       <body className="w-full">
         {/* <GeneralsProvider generals={generals}>  */}
-        {/*        <Navbar />  */}
+        <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
         {/* </GeneralsProvider> */}
       </body>
     </html>
