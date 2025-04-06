@@ -1,28 +1,13 @@
-<<<<<<< HEAD
-import { Card, MetaSEO, Picture } from "./shared";
-=======
-import { FieldData, Picture } from './shared';
->>>>>>> origin/feat/strapi-api
+import { FieldData, Picture } from "./shared";
 
 export interface IHome {
   data: HomeData;
 }
-
 export interface HomeData {
   id: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-<<<<<<< HEAD
-  home_banner: HomeBanner;
-  home_map: IHomeMap;
-  /*   home_companies: IHomeCompanies;
-  home_services: HomeServices;
-  home_projects: HomeProjects;
-  home_choose: HomeChoose;
-  home_about: HomeAbout;
-  Seo: MetaSEO; */
-=======
   banner: HomeBanner;
   problemsWeSolve: HomeProblemsWeSolve;
   ourServicesImpact: HomeOurServicesImpact;
@@ -34,7 +19,6 @@ export interface HomeData {
   contact: HomeContact;
   map: HomeMap;
   quoteRequestForm: HomeQuoteRequestForm;
->>>>>>> origin/feat/strapi-api
 }
 export interface HomeGenericSection {
   title: string;
@@ -50,37 +34,7 @@ export interface HomeBanner {
   desktopImage: Picture;
 }
 
-<<<<<<< HEAD
-export interface IHomeMap {
-  id?: string;
-  title: string;
-  list: string;
-}
-
-export interface IHomeAbout {
-  id?: string;
-  title: string;
-  desktopImage: Picture;
-  description: string;
-  title_values: string;
-  valuesCards: Card[];
-  meetOurTeam: IMeetOurTeam;
-}
-
-export interface IMeetOurTeam {
-  id?: string;
-  title: string;
-  images: Picture[];
-}
-
-/* export interface IHomeCompanies {
-  id: number
-  title: string
-  companies: Picture[]
-}
-=======
 export type HomeProblemsWeSolve = HomeGenericSection;
->>>>>>> origin/feat/strapi-api
 
 export type HomeOurServicesImpact = HomeGenericSection;
 

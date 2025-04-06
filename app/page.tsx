@@ -1,4 +1,4 @@
-import { getHomeData } from '@/lib/strapiApi';
+import { getHomeData } from "@/lib/strapiApi";
 import Cover from "./components/organisms/Cover";
 import ImpactOurServices from "./components/organisms/ImpactOurServices";
 import ProblemsWeSolve from "./components/organisms/ProblemsWeSolve";
@@ -9,8 +9,9 @@ import SpecializedServices from "./components/organisms/SpecializedServices";
 import Header from "./components/ui/Header";
 
 export default async function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const homeData = await getHomeData();
-  console.log(homeData)
+
   return (
     <main className="">
       <Header />

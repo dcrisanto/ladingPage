@@ -59,44 +59,102 @@ export async function getGeneralData() {
       },
     },
   );
-  console.log(general.data);
+
   return general.data;
 }
 
 export async function getHomeData() {
   const populate = {
     banner: {
-      populate: "*",
+      populate: {
+        tabletImage: {
+          populate: true,
+        },
+        desktopImage: {
+          populate: true,
+        },
+        mobileImage: {
+          populate: true,
+        },
+      },
     },
     problemsWeSolve: {
-      populate: "*",
+      populate: {
+        cards: {
+          populate: "*",
+        },
+      },
     },
     ourServicesImpact: {
-      populate: "*",
+      populate: {
+        cards: {
+          populate: "*",
+        },
+      },
     },
     services: {
-      populate: "*",
+      populate: {
+        cards: {
+          populate: "*",
+        },
+      },
     },
     specializedServices: {
-      populate: "*",
+      populate: {
+        cards: {
+          populate: "*",
+        },
+      },
     },
     about: {
-      populate: "*",
+      populate: {
+        valuesCards: {
+          populate: "*",
+        },
+        desktopImage: {
+          populate: "*",
+        },
+        tabletImage: {
+          populate: true,
+        },
+        mobileImage: {
+          populate: true,
+        },
+        meetOurTeam: {
+          populate: "*",
+        },
+      },
     },
     projects: {
-      populate: "*",
+      populate: {
+        images: {
+          populate: "*",
+        },
+      },
     },
     testimonials: {
-      populate: "*",
+      populate: {
+        cards: {
+          populate: "*",
+        },
+      },
     },
     map: {
-      populate: "*",
+      populate: {
+        serviceAreas: {
+          populate: "*",
+        },
+      },
     },
     contact: {
       populate: "*",
     },
     quoteRequestForm: {
-      populate: "*",
+      populate: {
+        fields: {
+          populate: "*",
+        },
+      },
     },
   };
 
