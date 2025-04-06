@@ -1,5 +1,6 @@
 "use client";
 
+import { useGenerals } from "@/app/context/generals.context";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -8,6 +9,7 @@ import GeneralMenu from "../molecules/header/GeneralMenu";
 import Navbar from "../organisms/Navbar";
 
 export default function Header() {
+  const { home } = useGenerals();
   const [showMenu, setShowMenu] = useState(false);
 
   return (

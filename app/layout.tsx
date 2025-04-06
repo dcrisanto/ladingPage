@@ -1,6 +1,5 @@
 import "./styles/globals.css";
-import { getGenerals } from "@/lib/getGenerals"; // Importamos la función de datos
-
+import { getGeneralData, getHomeData } from "@/lib/strapiApi";
 import { Metadata } from "next";
 import Head from "next/head";
 import { Navbar } from "./components/molecules";
@@ -26,16 +25,24 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  //const generals = await getGenerals(); // Obtiene `general` y `multilanguage`
+  const generalData = await getGeneralData();
+  const homeData = await getHomeData();
+
+  console.log({ generalData, homeData });
 
   return (
     <html>
       <body className="w-full">
-        {/* <GeneralsProvider generals={generals}>  */}
-        <Header />
-        {children}
-        <Footer />
-        {/* </GeneralsProvider> */}
+        <GeneralsProvider
+          generals={{
+            general: generalData,
+            home: homeData,
+          }}
+        >
+          <Header />
+          {children}
+          <Footer />
+        </GeneralsProvider>
       </body>
     </html>
   );

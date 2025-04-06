@@ -7,6 +7,8 @@ import img4 from "../../../public/images/impactOurServices/4.png";
 import coverImage from "../../../public/images/impactOurServices/background.jpeg";
 
 export default function ImpactOurServices() {
+  //Campo image, será la imagen de fondo
+
   const options = [
     {
       title: "Boost Employee Productivity",

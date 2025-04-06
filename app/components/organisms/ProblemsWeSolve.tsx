@@ -6,7 +6,7 @@ function ProblemsWeSolve() {
   const options = [
     {
       title: "Messy Workspaces",
-      text: "Reduced Productivity",
+      text: "Reduced Productivity", // Esto cambia a subtitle
       description:
         "A cluttered office can distract employees and lower efficiency. Our cleaning services create an organized, stress-free environment where teams can focus and thrive.",
     },

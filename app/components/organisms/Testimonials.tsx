@@ -14,7 +14,9 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      image: img,
+      image: {
+        url: img,
+      },
       name: "Sarah M.",
       position: "Office Manager",
       testimonial:
@@ -132,7 +134,7 @@ export default function Testimonials() {
 
         setSelectedStep(index);
       }
-    }, 150);
+    }, 150); // 150-200ms es un buen valor para detectar "scroll end"
   };
 
   useEffect(() => {

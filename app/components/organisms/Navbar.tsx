@@ -1,3 +1,4 @@
+import { useGenerals } from "@/app/context/generals.context";
 import CloseIcon from "@/app/icons/CloseIcon";
 import MenuIcon from "@/app/icons/Menu";
 import Link from "next/link";
@@ -10,28 +11,8 @@ interface Props {
 }
 
 export default function Navbar({ setShowMenu, showMenu }: Props) {
-  const options = [
-    {
-      title: "Home",
-      id: "",
-    },
-    {
-      title: "Services",
-      id: "#services",
-    },
-    {
-      title: "About Us",
-      id: "#about-us",
-    },
-    {
-      title: "Proyects",
-      id: "#proyects",
-    },
-    {
-      title: "Contact Us",
-      id: "#contact-us",
-    },
-  ];
+  const { general } = useGenerals();
+  const navigation = general?.header?.navigation ?? [];
 
   return (
     <>
@@ -39,13 +20,13 @@ export default function Navbar({ setShowMenu, showMenu }: Props) {
         className="flex items-center justify-between gap-12 max-lg:gap-8 max-md:hidden"
         style={{}}
       >
-        {options.map((option, index) => (
-          <Link key={index} href={option.id}>
+        {navigation.map((option: any, index) => (
+          <Link key={index} href={option.href ?? ""}>
             <div
               key={index}
               className="cursor-pointer font-light text-primary transition-all duration-300 hover:font-medium"
             >
-              {option.title}
+              {option?.text}
             </div>
           </Link>
         ))}

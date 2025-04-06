@@ -1,5 +1,6 @@
-"use client"; // Asegura que se ejecuta en el cliente
+"use client";
 
+// Asegura que se ejecuta en el cliente
 import {
   createContext,
   FC,
@@ -8,121 +9,34 @@ import {
   useState,
 } from "react";
 import { GeneralData } from "../interfaces/general";
-import { MultilanguageData } from "../interfaces/multilanguage";
+import { HomeData } from "../interfaces/home";
 
-// Definir el estado inicial
 const initialState: ControllerState = {
   general: {
-    id: 1,
+    title: "",
+    name: "",
     phone: "",
-    schedule: "",
-    address: "",
-    email: "",
-    createdAt: "",
-    updatedAt: "",
-    publishedAt: "",
-    map_url: "",
-    frame_url: "",
-    pixel_facebook: "",
-    tag_manager: "",
-    facebook_id: "",
-    social_network: [],
-    logo: {
-      id: 27,
-      name: "",
-      alternativeText: "",
-      caption: "",
-      width: 0,
-      height: 0,
-      formats: null,
-      hash: "",
-      ext: "",
-      mime: "",
-      size: 0,
-      url: "",
-      previewUrl: null,
-      provider: "",
-      provider_metadata: null,
-      createdAt: "",
-      updatedAt: "",
+    header: {
+      logo: {
+        text: "",
+        image: "",
+      },
+      navigation: [],
+      seo: {
+        metaTitle: "",
+        metaDescription: "",
+      },
     },
+    socialLinks: [],
   },
-  multilanguage: {
-    id: 22,
-    lbl_btn_quote: "",
-    lbl_btn_contact: "",
-    lbl_read_more: "",
-    lbl_send: "",
-    createdAt: "",
-    updatedAt: "",
-    publishedAt: "",
-    lbl_see_services: "",
-    lbl_view_more: "",
-    lbl_view_less: "",
-    menu: [],
-    form: {
-      id: 1,
-      title: "",
-      name: {
-        id: 2,
-        name: "",
-        label: "",
-        placeholder: ""
-      },
-      email: {
-        id: 3,
-        name: "",
-        label: "",
-        placeholder: ""
-      },
-      phone: {
-        id: 4,
-        name: "",
-        label: "",
-        placeholder: ""
-      },
-      service: {
-        id: 5,
-        name: "",
-        label: "",
-        placeholder: ""
-      },
-      date: {
-        id: 6,
-        name: "",
-        label: "",
-        placeholder: ""
-      },
-      time: {
-        id: 7,
-        name: "",
-        label: "",
-        placeholder: ""
-      },
-      dateTime: {
-        id: 8,
-        name: "",
-        label: "",
-        placeholder: ""
-      },
-      messages: {
-        invalid_tel: "",
-        invalid_name: "",
-        mail_sent_ok: "",
-        invalid_email: "",
-        invalid_number: "",
-        invalid_required: "",
-        validation_error: "",
-        invalid_recaptcha: ""
-      }
-    }
-  },
+  home: {},
 };
 
 // Definir la interfaz del contexto
 interface ControllerState {
   general: GeneralData;
-  multilanguage: MultilanguageData;
+  home: HomeData | any;
+  // multilanguage: MultilanguageData;
 }
 
 // Crear el contexto con el estado inicial
@@ -145,6 +59,8 @@ export const GeneralsProvider: FC<GeneralsProviderProps> = ({
   const [state] = useState(generals); // Estado inicial sin setters para evitar renders innecesarios
 
   return (
-    <GeneralsContext.Provider value={state}>{children}</GeneralsContext.Provider>
+    <GeneralsContext.Provider value={state}>
+      {children}
+    </GeneralsContext.Provider>
   );
 };
