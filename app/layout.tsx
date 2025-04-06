@@ -1,10 +1,7 @@
-import "./styles/globals.css";
-import { getGenerals } from "@/lib/getGenerals"; // Importamos la función de datos
-import { Navbar } from "./components/molecules";
 import { GeneralsProvider } from "./context/generals.context";
-import Head from "next/head";
-import { Metadata } from "next";
-import { Footer } from "./components/ui/Footer";
+import type { Metadata } from 'next';
+import "./styles/globals.css";
+import { getGeneralData } from '@/lib/strapiApi'; // Importamos la función de datos
 
 export const metadata: Metadata = {
   title: "Brightview",
@@ -24,16 +21,18 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  //const generals = await getGenerals(); // Obtiene `general` y `multilanguage`
+  const generalData = await getGeneralData();
 
   return (
     <html>
       <body className="w-full">
-        {/* <GeneralsProvider generals={generals}>  */}
-        {/*        <Navbar />  */}
-        {children}
-        {/* <Footer /> */}
-        {/* </GeneralsProvider> */}
+        <GeneralsProvider
+          generals={{
+            general: generalData,
+          }}
+        >
+          {children}
+        </GeneralsProvider>
       </body>
     </html>
   );

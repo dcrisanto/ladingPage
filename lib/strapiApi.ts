@@ -1,7 +1,8 @@
 "use server";
+
+import { ContactSignup, QuoteRequest } from "@/app/interfaces/forms";
 import { GeneralData } from "@/app/interfaces/general";
 import { HomeData } from "@/app/interfaces/home";
-import { ContactSignup, QuoteRequest } from "@/app/interfaces/forms";
 import axios from "axios";
 
 const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL;
@@ -9,7 +10,7 @@ const apiToken = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
 const createStrapiApiInstance = (
   baseURL: string | undefined,
-  apiToken: string | undefined
+  apiToken: string | undefined,
 ) => {
   if (!baseURL) throw new Error("baseUrl no está definido");
   if (!apiToken) throw new Error("apiToken no está definido");
@@ -23,6 +24,9 @@ const createStrapiApiInstance = (
 };
 
 export async function getGeneralData() {
+  console.log("BASE URL:", baseURL);
+  console.log("TOKEN:", apiToken);
+
   const populate = {
     header: {
       populate: "*",
@@ -37,12 +41,12 @@ export async function getGeneralData() {
 
   const instance = createStrapiApiInstance(baseURL, apiToken);
   const { data: general } = await instance.get<{ data: GeneralData }>(
-    `${baseURL}/api/general`,
+    "/api/general",
     {
       params: {
         populate,
       },
-    }
+    },
   );
 
   return general.data;

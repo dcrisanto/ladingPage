@@ -1,8 +1,6 @@
-export interface General {
-  data: GeneralData;
-}
-
+import { Picture } from './shared';
 export interface GeneralData {
+<<<<<<< HEAD
   id: number;
   phone: string;
   schedule: string;
@@ -22,28 +20,34 @@ export interface GeneralData {
 
 export interface Logo {
   id: number;
+=======
+  title: string;
+>>>>>>> origin/feat/strapi-api
   name: string;
-  alternativeText: string;
-  caption: string;
-  width: number;
-  height: number;
-  formats: null;
-  hash: string;
-  ext: string;
-  mime: string;
-  size: number;
-  url: string;
-  previewUrl: null;
-  provider: string;
-  provider_metadata: null;
-  createdAt: string;
-  updatedAt: string;
+  phone: string;
+  header: HeaderData;
+  socialLinks: Array<{
+    icon: Picture;
+    href: string;
+    isExternal: boolean;
+  }>;
 }
 
-export interface SocialNetwork {
-  id: number;
-  type: string;
-  url: string;
+export interface HeaderData {
+  logo: {
+    text: string;
+    image: string;
+  };
+  navigation: Array<{
+    text: string;
+    href: string;
+    isExternal: boolean;
+  }>;
+  seo: {
+    metaTitle: string;
+    metaDescription: string;
+    metaImage?: Picture;
+  };
 }
 
 export interface Icon {

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Card, MetaSEO, Picture } from "./shared";
+=======
+import { FieldData, Picture } from './shared';
+>>>>>>> origin/feat/strapi-api
 
 export interface IHome {
   data: HomeData;
@@ -9,6 +13,7 @@ export interface HomeData {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+<<<<<<< HEAD
   home_banner: HomeBanner;
   home_map: IHomeMap;
   /*   home_companies: IHomeCompanies;
@@ -17,21 +22,35 @@ export interface HomeData {
   home_choose: HomeChoose;
   home_about: HomeAbout;
   Seo: MetaSEO; */
+=======
+  banner: HomeBanner;
+  problemsWeSolve: HomeProblemsWeSolve;
+  ourServicesImpact: HomeOurServicesImpact;
+  services: HomeServices;
+  specializedServices: HomeSpecializedServices;
+  about: HomeAbout;
+  projects: HomeProjects;
+  testimonials: HomeTestimonials;
+  contact: HomeContact;
+  map: HomeMap;
+  quoteRequestForm: HomeQuoteRequestForm;
+>>>>>>> origin/feat/strapi-api
 }
-
-//++++++HOMEBANNER INTERFACES+++++++++++++//
-
-export interface HomeBanner {
-  id: number;
-  subtitle: string;
+export interface HomeGenericSection {
   title: string;
-  /*   img: Media;
-  video_desktop: Media;
-  video_tablet: Media;
-  video_mobile: Media;
-  pre_title: string; */
+  cards: Array<{
+    title: string;
+    description: string;
+  }>;
+}
+export interface HomeBanner {
+  title: string;
+  subtitle: string;
+  description: string;
+  desktopImage: Picture;
 }
 
+<<<<<<< HEAD
 export interface IHomeMap {
   id?: string;
   title: string;
@@ -59,101 +78,58 @@ export interface IMeetOurTeam {
   title: string
   companies: Picture[]
 }
+=======
+export type HomeProblemsWeSolve = HomeGenericSection;
+>>>>>>> origin/feat/strapi-api
 
-export interface Media {
-  id: number
-  name: string
-  alternativeText: null
-  caption: null
-  width: null
-  height: null
-  formats: null
-  hash: string
-  ext: string
-  mime: string
-  size: number
-  url: string
-  previewUrl: null
-  provider: string
-  provider_metadata: null
-  createdAt: string
-  updatedAt: string
-}
+export type HomeOurServicesImpact = HomeGenericSection;
 
-//++++++HOMESERVICES_INTERFACES+++++++++++++//
+export type HomeServices = HomeGenericSection;
 
-export interface HomeServices {
-  id: number
-  title: string
-  subtitle: string
-  text: string
-  service_card: ServiceCard[]
-}
-
-export interface ServiceCard {
-  id: number
-  text: string
-  title: string
-  image: Picture
-  image_mobile: Picture
-}
-
-//++++++HOMEMIDDLE_INTERFACES+++++++++++++//
-
-//++++++HOME PROJECTS_INTERFACES+++++++++++++//
-
-export interface HomeProjects {
-  id: number
-  subtitle: string
-  title: string
-  bg_image: Picture
-  images: Images[]
-  project_card: IProjectCard[]
-}
-
-export interface IProjectCard {
-  id: number
-  title: string
-  text: string
-}
-
-export interface Images {
-  id: number
-  image: Picture
-}
-
-//++++++HOMEBENEFITS_INTERFACES+++++++++++++//
-
-export interface HomeChoose {
-  id: number
-  subtitle: string
-  title: string
-  text: string
-  choose_card: ChooseCard[]
-  img: Picture
-}
-export interface ChooseCard {
-  id: number
-  title: string
-  text: string
-  image: Picture
-}
-//++++++HOMEABOUT_INTERFACES+++++++++++++//
-
+export type HomeSpecializedServices = HomeGenericSection;
 export interface HomeAbout {
-  id: number
-  subtitle: string
-  title: string
-  text: string
-  img: Picture
+  title: string;
+  desctiption: string;
+  valuesCards: Array<{
+    title: string;
+    description: string;
+  }>;
+  meetOurTeam: {
+    title: string;
+  };
 }
-
-//++++++HOMEMAP_INTERFACES+++++++++++++//
-
+export interface HomeProjects {
+  title: string;
+  description: string;
+}
+export interface HomeTestimonials extends HomeGenericSection {
+  description: string;
+}
+export interface HomeContact {
+  title: string;
+  description: string;
+  locationUrl: string;
+}
 export interface HomeMap {
-  id: number
-  title: string
-  text: string
-  cities: string
+  title: string;
+  servicesAreas: Array<{
+    name: string;
+    coordinates: {
+      lat: number;
+      lon: number;
+    };
+  }>;
 }
- */
+
+export interface HomeQuoteRequestForm {
+  title: string;
+  cta: string;
+  description: string;
+  fields: {
+    name: FieldData;
+    phone: FieldData;
+    service: FieldData;
+    email: FieldData;
+    preferredDateTime: FieldData;
+  };
+}
