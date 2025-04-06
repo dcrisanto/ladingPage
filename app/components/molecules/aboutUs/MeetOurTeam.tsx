@@ -9,8 +9,9 @@ export default function MeetOurTeam() {
   const images = Array(3).fill("");
   const [selectedStep, setSelectedStep] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  const handleScroll = () => {
+  /*   const handleScroll = () => {
     if (carouselRef.current) {
       const carouselWidth = carouselRef.current.scrollWidth;
       const containerWidth = carouselRef.current.offsetWidth;
@@ -21,6 +22,25 @@ export default function MeetOurTeam() {
       );
       setSelectedStep(index);
     }
+  }; */
+
+  const handleScroll = () => {
+    if (scrollTimeout.current) {
+      clearTimeout(scrollTimeout.current);
+    }
+
+    scrollTimeout.current = setTimeout(() => {
+      if (carouselRef.current) {
+        const carouselWidth = carouselRef.current.scrollWidth;
+        const containerWidth = carouselRef.current.offsetWidth;
+        const scrollPosition = carouselRef.current.scrollLeft;
+
+        const index = Math.floor(
+          (scrollPosition / (carouselWidth - containerWidth)) * images.length,
+        );
+        setSelectedStep(index);
+      }
+    }, 150);
   };
 
   useEffect(() => {

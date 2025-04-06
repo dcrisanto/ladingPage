@@ -6,7 +6,7 @@ import OurValues from "../molecules/aboutUs/OurValues";
 
 export default function AboutUs() {
   return (
-    <div className="relative">
+    <div className="relative" id="about-us">
       <div className="relative">
         <div
           className="absolute top-0 flex h-[120px] w-full items-center justify-end bg-[#2f62ad] max-[900px]:hidden"
