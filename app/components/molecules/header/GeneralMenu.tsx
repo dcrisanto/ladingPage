@@ -47,7 +47,7 @@ export default function GeneralMenu({ setShowMenu }: Props) {
               index < options.length - 1 && "border-b border-b-black",
             )}
           >
-            <p className="flex-1 cursor-pointer px-4 py-4 text-lg font-light text-[#2F62AD] transition-all group-hover:text-white">
+            <p className="flex-1 cursor-pointer px-4 py-4 text-base font-light text-[#2F62AD] transition-all group-hover:text-white">
               {option.title}
             </p>
           </div>
