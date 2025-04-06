@@ -11,7 +11,9 @@ import ProblemsWeSolve from "./components/organisms/ProblemsWeSolve";
 import Projects from "./components/organisms/Projects";
 import QuickContactForm from "./components/organisms/QuickContactForm";
 import Services from "./components/organisms/Services";
+import ServicesAreas from "./components/organisms/ServicesAreas";
 import SpecializedServices from "./components/organisms/SpecializedServices";
+import Testimonials from "./components/organisms/Testimonials";
 import Header from "./components/ui/Header";
 
 /* import { HomeData } from "./interfaces/home";
@@ -39,6 +41,7 @@ export default async function Home() {
       <Services />
       <SpecializedServices />
       <Projects />
+      <Testimonials />
       <QuickContactForm />
       {/*    <HomeBanner data={homeData.home_banner} /> */}
       {/*  <HomeSolve data={homeData.home_problems_solve} />

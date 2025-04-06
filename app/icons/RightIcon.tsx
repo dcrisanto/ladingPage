@@ -2,9 +2,9 @@ import React from "react";
 import { Icon } from "../interfaces/general";
 
 export default function RightIcon({
-    width = 20,
-    height = 11,
-    color = "white"
+  width = 20,
+  height = 11,
+  color = "white",
 }: Icon) {
   return (
     <svg
@@ -14,7 +14,7 @@ export default function RightIcon({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1063_26)">
+      <g clipPath="url(#clip0_1063_26)">
         <path
           d="M19.4645 5.50861L14.5068 10.4662H10.2951L13.7927 6.97104H0.452881V4.04618H13.7927L10.2951 0.551758H14.5068L19.4645 5.50861Z"
           fill={color}

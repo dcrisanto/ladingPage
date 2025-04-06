@@ -20,7 +20,7 @@ export default function Projects() {
     },
     {
       before: before2,
-      after: before2,
+      after: after2,
     },
   ];
 
@@ -74,11 +74,11 @@ export default function Projects() {
         <div className="grid flex-1 grid-cols-2 max-[850px]:grid-cols-1">
           <div className="relative">
             <div className="">
-              <div className="text- absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
+              <div className="absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
                 Before
               </div>
             </div>
-            <div className="max-[850px]:max-h-[200px]">
+            <div className="overflow-hidden max-[850px]:max-h-[200px]">
               <Image
                 src={options[selectedProject].before}
                 alt=""
@@ -92,7 +92,7 @@ export default function Projects() {
           </div>
           <div className="relative">
             <div className="">
-              <div className="text- absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
+              <div className="absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
                 After
               </div>
             </div>
