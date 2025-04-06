@@ -1,28 +1,7 @@
-import { Picture } from './shared';
-export interface GeneralData {
-<<<<<<< HEAD
-  id: number;
-  phone: string;
-  schedule: string;
-  email: string;
-  address: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  map_url: string;
-  frame_url: string;
-  pixel_facebook: string;
-  tag_manager: string;
-  facebook_id: string;
-  social_networks: SocialNetwork[];
-  logo: Logo;
-}
+import { Picture } from "./shared";
 
-export interface Logo {
-  id: number;
-=======
+export interface GeneralData {
   title: string;
->>>>>>> origin/feat/strapi-api
   name: string;
   phone: string;
   header: HeaderData;

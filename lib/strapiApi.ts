@@ -29,10 +29,21 @@ export async function getGeneralData() {
 
   const populate = {
     header: {
-      populate: "*",
+      populate: {
+        logo: {
+          populate: "*",
+        },
+        navigation: {
+          populate: "*",
+        },
+      },
     },
     seo: {
-      populate: "*",
+      populate: {
+        shareImage: {
+          populate: true,
+        },
+      },
     },
     socialLinks: {
       populate: "*",
@@ -48,7 +59,7 @@ export async function getGeneralData() {
       },
     },
   );
-
+  console.log(general.data);
   return general.data;
 }
 
