@@ -3,6 +3,7 @@ import React from "react";
 import img1 from "../../../public/images/services/1.png";
 import img2 from "../../../public/images/services/2.png";
 import img3 from "../../../public/images/services/3.png";
+import ServiceItem from "../molecules/services/ServiceItem";
 
 export default function Services() {
   const services = [
@@ -68,49 +69,12 @@ export default function Services() {
 
   return (
     <div className="mb-10" id="services">
-      <p className="mb-12 mt-20 text-center text-3xl font-semibold text-[#1A3666]">
+      <p className="mb-12 mt-20 text-center text-3xl font-semibold text-[#1A3666] max-xl:text-2xl max-[900px]:mb-6 max-[900px]:mt-14">
         Services
       </p>
-      <div className="grid grid-cols-3 gap-16 px-28">
+      <div className="grid grid-cols-3 gap-16 px-28 max-xl:gap-8 max-xl:px-16 max-[1100px]:gap-4 max-[1100px]:px-6 max-[900px]:grid-cols-1">
         {services.map((service, index) => (
-          <div key={index} className="group cursor-pointer">
-            <div className="relative h-[400px]">
-              <div className="absolute inset-0 z-[-5]">
-                <Image
-                  src={service.image}
-                  alt=""
-                  style={{
-                    objectFit: "cover",
-                    height: "100%",
-                    width: "100%",
-                  }}
-                />
-              </div>
-              <div className="h-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="absolute inset-0 z-[-1] bg-primary opacity-[0.8]" />
-                <div className="flex h-full flex-col items-center justify-center gap-4">
-                  {service.options.map((opt, index) => (
-                    <div key={index} className="flex items-start gap-3 px-10">
-                      <div className="mt-[9px]">
-                        <div className="h-[4px] w-[4px] rounded-full bg-white" />
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-light text-white">
-                          <span className="font-medium">{opt.subtitle}: </span>
-                          {opt.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-center bg-[#1A3666] py-5">
-              <p className="px-4 text-center font-medium text-white">
-                {service.title}
-              </p>
-            </div>
-          </div>
+          <ServiceItem service={service} key={index} />
         ))}
       </div>
     </div>

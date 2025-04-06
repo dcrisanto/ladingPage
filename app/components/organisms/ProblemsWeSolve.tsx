@@ -52,7 +52,7 @@ function ProblemsWeSolve() {
           </p>
         </div>
       </div>
-      <div className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 grid grid-cols-3 gap-10 px-28 max-xl:gap-8 max-xl:px-16 max-[1100px]:gap-6 max-[1100px]:px-10 max-[900px]:flex max-[900px]:flex-row max-[900px]:overflow-x-auto max-[900px]:py-6">
+      <div className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 grid grid-cols-3 gap-10 px-28 max-xl:gap-8 max-xl:px-16 max-[1100px]:gap-6 max-[1100px]:px-10 max-[900px]:flex max-[900px]:flex-row max-[900px]:overflow-x-auto max-[900px]:px-6 max-[900px]:py-6">
         {options.map((option, index) => (
           <div
             key={index}
