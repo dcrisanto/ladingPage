@@ -70,7 +70,7 @@ export default function QuickContactForm() {
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
                 )}
                 placeholder="Enter company name"
-                value={phone}
+                value={company}
                 onChange={(e) => {
                   setCompany(e.target.value);
                 }}
@@ -114,7 +114,7 @@ export default function QuickContactForm() {
                 className={cn(
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
                 )}
-                placeholder="Enter email"
+                placeholder="Select a service"
                 value={phone}
                 onChange={(e) => {
                   setEmail(e.target.value);

@@ -9,14 +9,14 @@ export default function Cover() {
     <div
       className="relative mt-[var(--app-header-height)]"
       style={{
-        height: "calc(100vh - var(--app-header-height))",
+        minHeight: "calc(100vh - var(--app-header-height))",
         width: "100vw",
       }}
     >
       <div
-        className="w-full"
+        className="inset absolute top-0 z-[-1] h-full w-full max-[900px]:hidden"
         style={{
-          height: "calc(100vh - var(--app-header-height))",
+          minHeight: "calc(100vh - var(--app-header-height))",
         }}
       >
         <Image
@@ -30,16 +30,16 @@ export default function Cover() {
         />
       </div>
       <div
-        className="absolute top-0 z-10 grid h-full w-full gap-24 px-28"
+        className="z-10 grid h-full w-full gap-36 px-28 max-xl:gap-8 max-xl:px-16 max-[1100px]:gap-6 max-[1100px]:px-6 max-[900px]:block max-[900px]:gap-0 max-[900px]:gap-4 max-[900px]:px-0 max-[900px]:px-4"
         style={{
-          gridTemplateColumns: "1.5fr 1fr",
+          gridTemplateColumns: "1.3fr 1fr",
         }}
       >
         <CoverMessage />
         <Form />
       </div>
       <div
-        className="absolute bottom-0 right-0 h-[140px] w-screen bg-[#2f62ad73]"
+        className="absolute bottom-0 right-0 z-[-1] h-[140px] w-screen bg-[#2f62ad73]"
         style={{
           clipPath: "polygon(100% 0, 57% 100%, 100% 100%)",
         }}
