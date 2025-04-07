@@ -1,5 +1,6 @@
 import CalendarIcon from "@/app/icons/Calendar";
 import Clock from "@/app/icons/Clock";
+import { DialogTitle } from "@radix-ui/react-dialog";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import React, { useState } from "react";
 import { ActiveModifiers } from "react-day-picker";
@@ -77,6 +78,7 @@ function DatePickermodal({
   return (
     <Dialog open={isVisible} onOpenChange={setIsVisible}>
       <DialogContent className="w-[350px] bg-white px-4">
+        <DialogTitle></DialogTitle>
         <div className="flex items-center justify-start">
           <div className="flex items-center gap-2 bg-[#1A3666] px-2 py-[1px]">
             <CalendarIcon />

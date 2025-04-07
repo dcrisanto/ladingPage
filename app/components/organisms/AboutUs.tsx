@@ -38,7 +38,7 @@ export default function AboutUs() {
         </p>
       </div>
       <div className="grid grid-cols-2 gap-10 px-28 pb-[60px] max-xl:px-16 max-[1100px]:gap-8 max-[1100px]:px-4 max-[1100px]:pb-[10px] max-[950px]:grid-cols-1">
-        <div className="relative max-h-[500px] max-[1000px]:max-h-[350px]">
+        <div className="relative max-h-[500px] max-[1000px]:h-[350px]">
           {getFormattedImageUrl(aboutSection?.desktopImage?.url) && (
             <Image
               layout="fill"

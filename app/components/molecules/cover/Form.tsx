@@ -5,9 +5,10 @@ import CalendarClock from "@/app/icons/CalendarClock";
 import Cellphone from "@/app/icons/Cellphone";
 import SimpleStart from "@/app/icons/SimpleStart";
 import SquareChevronDown from "@/app/icons/SquareChevronDown";
-import { cn } from "@/app/utils";
+import { cn, validationEmail } from "@/app/utils";
 import React, { useState } from "react";
 import DatePickermodal from "../../organisms/DatePickermodal";
+import MeetConfirmationModal from "../../organisms/MeetConfirmationModal";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,6 +24,9 @@ export default function Form() {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const [showDatePickerModal, setShowDatePickerModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [loading, setLoading] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [formError, setFormError] = useState<any>({});
   const fields = home?.quoteRequestForm?.fields;
 
   const services = [
@@ -72,6 +76,29 @@ export default function Form() {
     return fields?.preferredDateTime?.placeholder ?? "";
   };
 
+  const sendInformation = () => {
+    let errors: any = {};
+    if (!company) {
+      errors.company = true;
+      errors.companyMessage = "The company name is mandatory";
+    } else if (!email) {
+      errors.email = true;
+      errors.emailMessage = "The email is mandatory";
+    } else if (!validationEmail(email?.trim())) {
+      errors.email = true;
+      errors.emailMessage = "The email is invalid";
+    } else if (!phone) {
+      errors.phone = true;
+      errors.phoneMessage = "The phone number is mandatory";
+    } else if (!selectedService) {
+      errors.service = true;
+      errors.serviceMessage = "Select a service";
+    } else {
+      setShowConfirmationModal(true);
+    }
+    setFormError(errors);
+  };
+
   return (
     <>
       <div className="flex items-center justify-center py-8 max-[900px]:justify-start max-[900px]:bg-[#2F62AD] max-[900px]:py-0">
@@ -99,6 +126,7 @@ export default function Form() {
               <input
                 className={cn(
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
+                  formError?.company && "border-red-500",
                 )}
                 placeholder={fields?.name?.placeholder}
                 value={company}
@@ -106,6 +134,11 @@ export default function Form() {
                   setCompany(e.target.value);
                 }}
               />
+              {formError.company && formError.companyMessage && (
+                <p className="mt-1 text-xs text-red-500">
+                  {formError?.companyMessage}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1">
               <p className="text-sm font-light text-[#2F62AD]">
@@ -114,6 +147,7 @@ export default function Form() {
               <input
                 className={cn(
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
+                  formError?.email && "border-red-500",
                 )}
                 placeholder={fields?.email?.placeholder}
                 value={email}
@@ -121,6 +155,11 @@ export default function Form() {
                   setEmail(e.target.value);
                 }}
               />
+              {formError.email && formError.emailMessage && (
+                <p className="mt-1 text-xs text-red-500">
+                  {formError?.emailMessage}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1">
               <p className="text-sm font-light text-[#2F62AD]">
@@ -129,6 +168,7 @@ export default function Form() {
               <input
                 className={cn(
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
+                  formError?.phone && "border-red-500",
                 )}
                 placeholder={fields?.phone?.placeholder}
                 value={phone}
@@ -136,6 +176,11 @@ export default function Form() {
                   setPhone(e.target.value);
                 }}
               />
+              {formError.phone && formError.phoneMessage && (
+                <p className="mt-1 text-xs text-red-500">
+                  {formError?.phoneMessage}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1">
               <p className="text-sm font-light text-[#2F62AD]">
@@ -151,7 +196,12 @@ export default function Form() {
                     setIsOpenDropdown(true);
                   }}
                 >
-                  <div className="flex w-full cursor-pointer items-center justify-start border-[1px] border-[#2F62AD] pr-2 transition-all duration-300 hover:bg-[rgba(0,0,0,0.1)]">
+                  <div
+                    className={cn(
+                      "flex w-full cursor-pointer items-center justify-start border-[1px] border-[#2F62AD] pr-2 transition-all duration-300 hover:bg-[rgba(0,0,0,0.1)]",
+                      formError?.service && "border-red-500",
+                    )}
+                  >
                     <p className="flex h-[42px] flex-1 flex-col justify-center px-3 font-extralight text-[#2F62AD]">
                       {getSelectedService()}
                     </p>
@@ -175,6 +225,11 @@ export default function Form() {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
+              {formError.service && formError.serviceMessage && (
+                <p className="mt-1 text-xs text-red-500">
+                  {formError?.serviceMessage}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1">
               <p className="text-sm font-light text-[#2F62AD]">
@@ -191,8 +246,15 @@ export default function Form() {
               </div>
             </div>
             <div className="flex items-center justify-start">
-              <div className="flex h-[40px] w-full items-center justify-center bg-[#2F62AD]">
-                <p className="text-sm font-medium text-white">Send</p>
+              <div
+                className="flex h-[40px] w-full cursor-pointer items-center justify-center bg-[#2F62AD]"
+                onClick={sendInformation}
+              >
+                {loading ? (
+                  <></>
+                ) : (
+                  <p className="text-sm font-medium text-white">Send</p>
+                )}
               </div>
             </div>
           </div>
@@ -203,6 +265,10 @@ export default function Form() {
         setIsVisible={setShowDatePickerModal}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+      />
+      <MeetConfirmationModal
+        isVisible={showConfirmationModal}
+        setIsVisible={setShowConfirmationModal}
       />
     </>
   );

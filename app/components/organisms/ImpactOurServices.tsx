@@ -14,28 +14,6 @@ export default function ImpactOurServices() {
   const { home } = useGenerals();
   const ourServicesImpact = home?.ourServicesImpact;
   const options = ourServicesImpact?.cards ?? [];
-  //Campo image, será la imagen de fondo
-
-  console.log({ ourServicesImpact });
-
-  /*   const options = [
-    {
-      title: "Boost Employee Productivity",
-      img: img1,
-    },
-    {
-      title: "Reduce Sick Days & Improve Well-being",
-      img: img2,
-    },
-    {
-      title: "Enhance Brand Image",
-      img: img3,
-    },
-    {
-      title: "Eco-Friendly Solutions",
-      img: img4,
-    },
-  ]; */
 
   return (
     <div className="relative mt-20 pb-16 pt-16 max-[900px]:mt-10 max-[900px]:pt-12">
