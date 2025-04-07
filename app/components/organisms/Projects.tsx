@@ -1,8 +1,9 @@
 "use client";
 
+import { useGenerals } from "@/app/context/generals.context";
 import RightIcon from "@/app/icons/RightIcon";
 import Star from "@/app/icons/Star";
-import { cn } from "@/app/utils";
+import { cn, getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useState } from "react";
 import after1 from "../../../public/images/projects/after1.png";
@@ -11,9 +12,12 @@ import before1 from "../../../public/images/projects/before1.png";
 import before2 from "../../../public/images/projects/before2.png";
 
 export default function Projects() {
+  const { home } = useGenerals();
+  const projectsSection = home?.projects;
+  const projects = projectsSection?.projects ?? [];
   const [selectedProject, setSelectedProject] = useState(0);
 
-  const options = [
+  /*   const options = [
     {
       before: before1,
       after: after1,
@@ -22,7 +26,7 @@ export default function Projects() {
       before: before2,
       after: after2,
     },
-  ];
+  ]; */
 
   return (
     <div
@@ -74,38 +78,52 @@ export default function Projects() {
         <div className="grid flex-1 grid-cols-2 max-[850px]:grid-cols-1">
           <div className="relative">
             <div className="">
-              <div className="absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
+              <div className="absolute left-0 top-0 z-[50] bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
                 Before
               </div>
             </div>
-            <div className="overflow-hidden max-[850px]:max-h-[200px]">
-              <Image
-                src={options[selectedProject].before}
-                alt=""
-                style={{
-                  objectFit: "cover",
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
+            <div className="relative h-[500px] overflow-hidden max-[850px]:max-h-[200px]">
+              {getFormattedImageUrl(projects[selectedProject]?.before?.url) && (
+                <Image
+                  src={
+                    getFormattedImageUrl(
+                      projects[selectedProject]?.before?.url,
+                    ) ?? ""
+                  }
+                  layout="fill"
+                  alt=""
+                  style={{
+                    objectFit: "cover",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+              )}
             </div>
           </div>
           <div className="relative">
             <div className="">
-              <div className="absolute left-0 top-0 bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
+              <div className="absolute left-0 top-0 z-[50] bg-[#1A3666] px-3 py-1 text-sm font-medium text-white">
                 After
               </div>
             </div>
-            <div className="overflow-hidden max-[850px]:max-h-[200px]">
-              <Image
-                src={options[selectedProject].after}
-                alt=""
-                style={{
-                  objectFit: "cover",
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
+            <div className="relative h-[500px] overflow-hidden max-[850px]:max-h-[200px]">
+              {getFormattedImageUrl(projects[selectedProject]?.after?.url) && (
+                <Image
+                  layout="fill"
+                  src={
+                    getFormattedImageUrl(
+                      projects[selectedProject]?.after?.url,
+                    ) ?? ""
+                  }
+                  alt=""
+                  style={{
+                    objectFit: "cover",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -127,19 +145,19 @@ export default function Projects() {
           </div>
           <div
             onClick={() => {
-              if (selectedProject < options?.length - 1) {
+              if (selectedProject < projects?.length - 1) {
                 setSelectedProject(selectedProject + 1);
               }
             }}
             className={cn(
               "flex h-[40px] w-[40px] cursor-pointer items-center justify-center border border-[2px] border-solid border-[#ffffff80] transition-all duration-300",
-              selectedProject < options?.length - 1 &&
+              selectedProject < projects?.length - 1 &&
                 "border-white hover:scale-[1.04]",
             )}
           >
             <RightIcon
               color={
-                selectedProject < options?.length - 1 ? "white" : "#ffffff80"
+                selectedProject < projects?.length - 1 ? "white" : "#ffffff80"
               }
             />
           </div>

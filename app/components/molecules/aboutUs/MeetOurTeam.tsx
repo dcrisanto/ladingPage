@@ -5,7 +5,6 @@ import Star from "@/app/icons/Star";
 import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import img from "../../../../public/images/cover.png";
 
 export default function MeetOurTeam() {
   const { home } = useGenerals();
@@ -14,8 +13,6 @@ export default function MeetOurTeam() {
   const [selectedStep, setSelectedStep] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
-
-  console.log({ meetOurTeamSection });
 
   const handleScroll = () => {
     if (scrollTimeout.current) {
