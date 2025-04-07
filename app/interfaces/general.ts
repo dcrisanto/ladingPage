@@ -13,6 +13,10 @@ export interface GeneralData {
     href: string;
     isExternal: boolean;
   }>;
+  servicesList: Array<{
+    label: string;
+    value: string;
+  }>;
 }
 
 export interface HeaderData {
