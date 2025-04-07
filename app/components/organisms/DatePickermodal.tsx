@@ -10,8 +10,8 @@ import { Dialog, DialogContent } from "../ui/Dialog";
 interface Props {
   isVisible: boolean;
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  selectedDate: Date;
-  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
+  selectedDate: Date | null;
+  setSelectedDate: React.Dispatch<React.SetStateAction<Date | null>>;
 }
 
 function DatePickermodal({
@@ -23,6 +23,9 @@ function DatePickermodal({
   const [hour, setHour] = useState(8);
   const [minute, setMinute] = useState(0);
   const [amPm, setAmPm] = useState<"AM" | "PM">("AM");
+  const [newSelectedDate, setNewSelectedDate] = useState(
+    selectedDate ?? new Date(),
+  );
 
   const handleArrow = (
     type: "hour" | "minute" | "ampm",
@@ -73,7 +76,26 @@ function DatePickermodal({
     </div>
   );
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    const date = new Date(newSelectedDate);
+    let finalHour = hour;
+    if (amPm === "PM" && hour !== 12) {
+      finalHour += 12;
+    } else if (amPm === "AM" && hour === 12) {
+      finalHour = 0;
+    }
+    date.setHours(finalHour);
+    date.setMinutes(minute);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+
+    // Esto es el nuevo objeto Date con la fecha + hora
+    console.log("Selected Full Date:", date);
+
+    // Guardar la fecha en el estado original
+    setSelectedDate(date);
+    setIsVisible(false);
+  };
 
   return (
     <Dialog open={isVisible} onOpenChange={setIsVisible}>
@@ -90,7 +112,7 @@ function DatePickermodal({
           <Calendar
             fromDate={new Date()}
             mode="single"
-            selected={selectedDate}
+            selected={newSelectedDate}
             defaultMonth={new Date()}
             onSelect={(
               day: Date | undefined,
@@ -98,7 +120,7 @@ function DatePickermodal({
               activeModifiers: ActiveModifiers,
               e: React.MouseEvent<Element, MouseEvent>,
             ) => {
-              setSelectedDate(day as Date);
+              setNewSelectedDate(day as Date);
             }}
             className="w-full"
           />

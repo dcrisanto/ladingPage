@@ -43,6 +43,7 @@ export default function QuickContactForm() {
   };
 
   const sendInformation = async () => {
+    setFormError({});
     let errors: any = {};
     if (!company) {
       errors.company = true;
@@ -73,7 +74,9 @@ export default function QuickContactForm() {
         setShowConfirmationModal(true);
         setLoading(false);
       } catch (err) {
-        setFormError(false);
+        setLoading(false);
+        errors.main = true;
+        errors.mainMessage = "An error occurred, please try again";
         console.log("Ocurrió un error: ", err);
       }
     }
@@ -261,7 +264,12 @@ export default function QuickContactForm() {
                 />
               </div>
             </div>
-            <div className="mt-[30px] flex items-center justify-start pb-[30px] max-[900px]:mt-[20px] max-[900px]:w-full max-[900px]:pb-[60px]">
+            <div
+              className={cn(
+                "mt-[30px] flex items-center justify-start pb-[30px] max-[900px]:mt-[20px] max-[900px]:w-full max-[900px]:pb-[60px]",
+                formError.main && "pb-[5px] max-[900px]:pb-[5px]",
+              )}
+            >
               <div
                 className="flex h-[40px] w-[320px] cursor-pointer items-center justify-center bg-[#2F62AD] max-[900px]:w-full"
                 onClick={sendInformation}
@@ -273,6 +281,11 @@ export default function QuickContactForm() {
                 )}
               </div>
             </div>
+            {formError.main && formError.mainMessage && (
+              <p className="mb-[60px] mt-1 text-center text-red-500">
+                {formError?.mainMessage}
+              </p>
+            )}
           </div>
         </div>
       </div>
