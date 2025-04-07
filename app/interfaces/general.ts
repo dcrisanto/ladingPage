@@ -5,6 +5,8 @@ export interface GeneralData {
   name: string;
   phone: string;
   header: HeaderData;
+  location: string;
+  email: string;
   socialLinks: Array<{
     icon: Picture;
     href: string;

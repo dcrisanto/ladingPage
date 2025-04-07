@@ -16,6 +16,8 @@ const initialState: ControllerState = {
     title: "",
     name: "",
     phone: "",
+    location: "",
+    email: "",
     header: {
       logo: {
         text: "",

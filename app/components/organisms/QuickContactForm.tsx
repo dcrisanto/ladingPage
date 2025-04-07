@@ -98,9 +98,7 @@ export default function QuickContactForm() {
             <div className="flex h-[50px] w-[50px] items-center justify-center border border-solid border-white">
               <Marker />
             </div>
-            <p className="font-medium text-white">
-              {contactSection?.location ?? ""}
-            </p>
+            <p className="font-medium text-white">{general?.location ?? ""}</p>
           </div>
         </div>
         <div
