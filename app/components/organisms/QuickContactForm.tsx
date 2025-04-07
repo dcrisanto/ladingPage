@@ -282,7 +282,7 @@ export default function QuickContactForm() {
               </div>
             </div>
             {formError.main && formError.mainMessage && (
-              <p className="mb-[60px] mt-1 text-center text-red-500">
+              <p className="mb-[60px] mt-1 pb-[30px] text-left text-red-500 max-[900px]:text-center">
                 {formError?.mainMessage}
               </p>
             )}
