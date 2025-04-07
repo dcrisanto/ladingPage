@@ -3,7 +3,9 @@
 import { useGenerals } from "@/app/context/generals.context";
 import Marker from "@/app/icons/Marker";
 import Phone from "@/app/icons/Phone";
+import { ContactSignup } from "@/app/interfaces/forms";
 import { cn, validationEmail } from "@/app/utils";
+import { createContactSignupData } from "@/lib/strapiApi";
 import { CircularProgress } from "@mui/material";
 import React, { useState } from "react";
 import {
@@ -58,6 +60,22 @@ export default function QuickContactForm() {
       errors.service = true;
       errors.serviceMessage = "Select a service";
     } else {
+      try {
+        setLoading(true);
+        const contactSignup: ContactSignup = {
+          additionalNotes: "hola",
+          companyName: company?.trim(),
+          email: email?.trim(),
+          phone: email?.trim(),
+          service: getSelectedService(),
+        };
+        await createContactSignupData(contactSignup);
+        setShowConfirmationModal(true);
+        setLoading(false);
+      } catch (err) {
+        setFormError(false);
+        console.log("Ocurrió un error: ", err);
+      }
     }
 
     setFormError(errors);
