@@ -64,7 +64,7 @@ export default function QuickContactForm() {
       try {
         setLoading(true);
         const contactSignup: ContactSignup = {
-          additionalNotes: "hola",
+          additionalNotes: notes?.trim(),
           companyName: company?.trim(),
           email: email?.trim(),
           phone: email?.trim(),
