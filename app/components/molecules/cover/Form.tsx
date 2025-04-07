@@ -95,7 +95,7 @@ export default function Form() {
           email: email?.trim(),
           phone: email?.trim(),
           service: getSelectedService(),
-          prefferedDateTime: new Date().toISOString(),
+          preferredDateTime: new Date().toISOString(),
         };
         await createQuoteRequestData(quoteRequest);
         setShowConfirmationModal(true);

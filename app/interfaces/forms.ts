@@ -3,7 +3,7 @@ export interface QuoteRequest {
   email: string;
   phone: string;
   service: string;
-  prefferedDateTime: string;
+  preferredDateTime: string;
 }
 
 export interface ContactSignup {

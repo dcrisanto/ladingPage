@@ -174,10 +174,14 @@ export async function getHomeData() {
 
 export const createQuoteRequestData = async (quoteRequest: QuoteRequest) => {
   const instance = createStrapiApiInstance(baseURL, apiToken);
-  await instance.post("/api/quote-requests", quoteRequest);
+  await instance.post("/api/quote-requests", {
+    data: quoteRequest,
+  });
 };
 
 export const createContactSignupData = async (contactSignup: ContactSignup) => {
   const instance = createStrapiApiInstance(baseURL, apiToken);
-  await instance.post("/api/contact-signups", contactSignup);
+  await instance.post("/api/contact-signups", {
+    data: contactSignup,
+  });
 };
