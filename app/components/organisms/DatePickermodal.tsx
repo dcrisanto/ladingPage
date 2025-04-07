@@ -38,15 +38,13 @@ function DatePickermodal({
             : prev - 1,
       );
     } else if (type === "minute") {
-      setMinute((prev) =>
-        direction === "up"
-          ? prev === 59
-            ? 0
-            : prev + 1
-          : prev === 0
-            ? 59
-            : prev - 1,
-      );
+      setMinute((prev) => {
+        if (direction === "up") {
+          return prev === 0 ? 30 : 0;
+        } else {
+          return prev === 0 ? 30 : 0;
+        }
+      });
     } else if (type === "ampm") {
       setAmPm((prev) => (prev === "AM" ? "PM" : "AM"));
     }
