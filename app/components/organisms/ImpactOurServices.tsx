@@ -40,12 +40,14 @@ export default function ImpactOurServices() {
   return (
     <div className="relative mt-20 pb-16 pt-16 max-[900px]:mt-10 max-[900px]:pt-12">
       <div className="absolute inset-0 z-[-5]">
-        <Image
-          src={getFormattedImageUrl(ourServicesImpact?.image?.url) ?? ""}
-          alt="Background"
-          layout="fill"
-          objectFit="cover"
-        />
+        {getFormattedImageUrl(ourServicesImpact?.image?.url) && (
+          <Image
+            src={getFormattedImageUrl(ourServicesImpact?.image?.url) ?? ""}
+            alt="Background"
+            layout="fill"
+            objectFit="cover"
+          />
+        )}
       </div>
       <div className="absolute inset-0 z-[-1] bg-primary opacity-[.85]"></div>
       <div className="bg-red z-[10]">
@@ -60,16 +62,18 @@ export default function ImpactOurServices() {
             >
               <div className="flex items-center justify-center">
                 <div className="relative flex h-[60px] w-[60px] items-center justify-center max-[900px]:h-[40px] max-[900px]:w-[40px]">
-                  <Image
-                    src={getFormattedImageUrl(option?.image?.url) ?? ""}
-                    alt={option.title}
-                    layout="fill"
-                    style={{
-                      objectFit: "contain",
-                      height: "100%",
-                      width: "100%",
-                    }}
-                  />
+                  {getFormattedImageUrl(option?.image?.url) && (
+                    <Image
+                      src={getFormattedImageUrl(option?.image?.url) ?? ""}
+                      alt={option.title}
+                      layout="fill"
+                      style={{
+                        objectFit: "contain",
+                        height: "100%",
+                        width: "100%",
+                      }}
+                    />
+                  )}
                 </div>
               </div>
               <p className="text-center text-lg font-bold text-white max-[900px]:text-base">

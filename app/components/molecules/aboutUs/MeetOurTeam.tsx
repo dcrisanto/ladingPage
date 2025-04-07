@@ -1,28 +1,21 @@
 "use client";
 
+import { useGenerals } from "@/app/context/generals.context";
 import Star from "@/app/icons/Star";
+import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import img from "../../../../public/images/cover.png";
 
 export default function MeetOurTeam() {
-  const images = Array(3).fill("");
+  const { home } = useGenerals();
+  const meetOurTeamSection = home?.about?.meetOurTeam;
+  const images = meetOurTeamSection?.images ?? [];
   const [selectedStep, setSelectedStep] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  /*   const handleScroll = () => {
-    if (carouselRef.current) {
-      const carouselWidth = carouselRef.current.scrollWidth;
-      const containerWidth = carouselRef.current.offsetWidth;
-      const scrollPosition = carouselRef.current.scrollLeft;
-
-      const index = Math.floor(
-        (scrollPosition / (carouselWidth - containerWidth)) * images.length,
-      );
-      setSelectedStep(index);
-    }
-  }; */
+  console.log({ meetOurTeamSection });
 
   const handleScroll = () => {
     if (scrollTimeout.current) {
@@ -63,7 +56,7 @@ export default function MeetOurTeam() {
 
   return (
     <div
-      className="mt-[100px] grid px-28 pb-[92px] max-xl:px-16 max-[1100px]:mt-[20px] max-[1100px]:px-4 max-[1000px]:flex max-[1000px]:flex-col"
+      className="mt-[100px] grid px-28 pb-[92px] max-xl:px-16 max-[1100px]:mt-[20px] max-[1100px]:px-4 max-[1000px]:flex max-[1000px]:flex-col max-[900px]:px-0"
       style={{
         gridTemplateColumns: "1fr 1.3fr",
       }}
@@ -102,26 +95,29 @@ export default function MeetOurTeam() {
           className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 relative flex snap-x snap-mandatory overflow-x-auto"
           ref={carouselRef}
         >
-          {images.map((image, index) => (
+          {images.map((image: any, index: number) => (
             <div
-              className="z-[-1] min-w-full snap-center max-[1000px]:min-h-[300px]"
+              className="relative z-[-1] h-[350px] min-w-full snap-center max-[1000px]:min-h-[300px]"
               key={index}
             >
-              <Image
-                src={img}
-                alt=""
-                style={{
-                  objectFit: "cover",
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
+              {getFormattedImageUrl(image?.url) && (
+                <Image
+                  layout="fill"
+                  src={getFormattedImageUrl(image?.url) ?? ""}
+                  alt=""
+                  style={{
+                    objectFit: "cover",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+              )}
             </div>
           ))}
         </div>
         <div className="absolute bottom-[10px] z-[50] flex w-full items-center justify-center">
           <div className="flex flex-row items-center justify-center gap-4 border border-[2px] border-solid border-white px-3 py-2">
-            {images.map((dot, index) => (
+            {images.map((dot: any, index: number) => (
               <div
                 onClick={() => {
                   setSelectedStep(index);

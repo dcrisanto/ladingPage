@@ -27,16 +27,18 @@ export default function Cover() {
           minHeight: "calc(100vh - var(--app-header-height))",
         }}
       >
-        <Image
-          src={getFormattedImageUrl(desktopImageUrl) ?? ""}
-          alt=""
-          layout="fill"
-          style={{
-            objectFit: "cover",
-            height: "100%",
-            width: "100%",
-          }}
-        />
+        {getFormattedImageUrl(desktopImageUrl) && (
+          <Image
+            src={getFormattedImageUrl(desktopImageUrl) ?? ""}
+            alt=""
+            layout="fill"
+            style={{
+              objectFit: "cover",
+              height: "100%",
+              width: "100%",
+            }}
+          />
+        )}
       </div>
       <div
         className="z-10 grid h-full w-full gap-36 px-28 max-xl:gap-8 max-xl:px-16 max-[1100px]:gap-6 max-[1100px]:px-6 max-[900px]:block max-[900px]:gap-0 max-[900px]:gap-4 max-[900px]:px-0"

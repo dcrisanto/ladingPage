@@ -1,7 +1,9 @@
+"use client";
+
 import { useGenerals } from "@/app/context/generals.context";
+import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React from "react";
-import aboutUsImg from "../../../public/images/aboutus/1.png";
 import MeetOurTeam from "../molecules/aboutUs/MeetOurTeam";
 import OurValues from "../molecules/aboutUs/OurValues";
 
@@ -37,15 +39,18 @@ export default function AboutUs() {
       </div>
       <div className="grid grid-cols-2 gap-10 px-28 pb-[60px] max-xl:px-16 max-[1100px]:gap-8 max-[1100px]:px-4 max-[1100px]:pb-[10px] max-[950px]:grid-cols-1">
         <div className="relative max-h-[500px] max-[1000px]:max-h-[350px]">
-          <Image
-            src={aboutUsImg}
-            alt=""
-            style={{
-              objectFit: "contain",
-              height: "100%",
-              width: "100%",
-            }}
-          />
+          {getFormattedImageUrl(aboutSection?.desktopImage?.url) && (
+            <Image
+              layout="fill"
+              src={getFormattedImageUrl(aboutSection?.desktopImage?.url) ?? ""}
+              alt=""
+              style={{
+                objectFit: "contain",
+                height: "100%",
+                width: "100%",
+              }}
+            />
+          )}
           <div className="absolute bottom-0 z-[-1] h-[68%] w-full">
             <div
               className="h-[100%] w-[75%] bg-[#2f62ad] max-[1100px]:w-[100%]"

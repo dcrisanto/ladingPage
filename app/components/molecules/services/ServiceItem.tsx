@@ -21,16 +21,18 @@ function ServiceItem({ service }: Props) {
     <div className="group cursor-pointer">
       <div className="relative h-[420px] max-[900px]:min-h-[420px]">
         <div className="absolute inset-0 z-[-5]">
-          <Image
-            src={getFormattedImageUrl(service?.image?.url) ?? ""}
-            alt=""
-            layout="fill"
-            style={{
-              objectFit: "cover",
-              height: "100%",
-              width: "100%",
-            }}
-          />
+          {getFormattedImageUrl(service?.image?.url) && (
+            <Image
+              src={getFormattedImageUrl(service?.image?.url) ?? ""}
+              alt=""
+              layout="fill"
+              style={{
+                objectFit: "cover",
+                height: "100%",
+                width: "100%",
+              }}
+            />
+          )}
         </div>
         <div
           className={cn(
@@ -39,7 +41,7 @@ function ServiceItem({ service }: Props) {
         >
           <div className="absolute inset-0 z-[-1] bg-primary opacity-[0.8]" />
           <div className="flex h-full flex-col items-center justify-center gap-4">
-            {service.options.map((opt: any, index: number) => (
+            {service?.descriptions?.map((opt: any, index: number) => (
               <div key={index} className="flex items-start gap-3 px-10">
                 <div className="mt-[9px]">
                   <div className="h-[4px] w-[4px] rounded-full bg-white" />
