@@ -1,8 +1,14 @@
+"use client";
+
+import { useGenerals } from "@/app/context/generals.context";
 import Image from "next/image";
 import React from "react";
 import coverImage from "../../../../public/images/cover.png";
 
 function CoverMessage() {
+  const { home, general } = useGenerals();
+  const banner = home?.banner;
+
   return (
     <>
       <div
@@ -22,23 +28,16 @@ function CoverMessage() {
           <div className="mb-6 mt-20 flex items-center justify-start max-xl:mt-16 max-[1000px]:mt-[30px]">
             <div className="bg-[#1A3666] px-4 py-[1px]">
               <p className="font-light text-white max-[1000px]:text-sm">
-                Welcome to <span className="font-semibold">Brightview</span>
+                {banner?.subtitle ?? ""}{" "}
+                <span className="font-semibold">{general?.title ?? ""}</span>
               </p>
             </div>
           </div>
           <p className="text-6xl font-semibold text-white max-xl:text-4xl max-[1100px]:text-3xl">
-            A Clean Workspace,
-          </p>
-          <p className="text-6xl font-semibold text-white max-xl:text-4xl max-[1100px]:text-3xl">
-            A Better Business
+            {banner?.title ?? ""}
           </p>
           <p className="max-[1000px]:text-bas mt-5 text-lg font-extralight text-white">
-            Our business deserves a space that boosts productivity, health, and
-            success.
-          </p>
-          <p className="text-lg font-extralight text-white max-[1000px]:mb-[25px] max-[1000px]:text-base">
-            At Brightview, we eliminate clutter, hidden germs, and ensure a
-            clean, efficient environment
+            {banner?.description ?? ""}
           </p>
         </div>
       </div>
@@ -53,23 +52,16 @@ function CoverMessage() {
           <div className="mb-6 mt-20 mt-[30px] flex items-center justify-start">
             <div className="bg-[#1A3666] px-4 py-[1px]">
               <p className="font-light text-white max-[1000px]:text-sm">
-                Welcome to <span className="font-semibold">Brightview</span>
+                {banner?.subtitle ?? ""}{" "}
+                <span className="font-semibold">{general?.title ?? ""}</span>
               </p>
             </div>
           </div>
           <p className="text-3xl text-6xl font-semibold text-white">
-            A Clean Workspace,
+            {banner?.title ?? ""}
           </p>
-          <p className="text-3xl text-6xl font-semibold text-white">
-            A Better Business
-          </p>
-          <p className="max-[1000px]:text-bas mt-5 text-lg font-extralight text-white">
-            Our business deserves a space that boosts productivity, health, and
-            success.
-          </p>
-          <p className="text-lg font-extralight text-white max-[1000px]:mb-[25px] max-[1000px]:text-base">
-            At Brightview, we eliminate clutter, hidden germs, and ensure a
-            clean, efficient environment
+          <p className="mt-5 text-lg font-extralight text-white max-[1000px]:mb-[25px] max-[1000px]:text-base">
+            {banner?.description ?? ""}
           </p>
         </div>
         <div
