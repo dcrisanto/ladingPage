@@ -1,16 +1,69 @@
 "use client";
 
+import { useGenerals } from "@/app/context/generals.context";
 import Marker from "@/app/icons/Marker";
 import Phone from "@/app/icons/Phone";
 import { cn } from "@/app/utils";
 import React, { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "../ui/Dropdown";
 
 export default function QuickContactForm() {
+  const { home, general } = useGenerals();
+  const contactSection = home?.contact;
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [selectedService, setSelectedService] = useState("");
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const [notes, setNotes] = useState("");
+  const fields = home?.quoteRequestForm?.fields;
+
+  const services = [
+    {
+      title: "Office Cleaning",
+      id: "Office Cleaning",
+    },
+    {
+      title: "Restroom Cleaning",
+      id: "Restroom Cleaning",
+    },
+    {
+      title: "Common Area Cleaning",
+      id: "Common Area Cleaning",
+    },
+    {
+      title: "Deep Cleaning",
+      id: "Deep Cleaning",
+    },
+    {
+      title: "Post-Event Cleaning",
+      id: "Post-Event Cleaning",
+    },
+    {
+      title: "Advanced Sanitization & Disinfection",
+      id: "Advanced Sanitization & Disinfection",
+    },
+    {
+      title: "Office Plant Care",
+      id: "Office Plant Care",
+    },
+  ];
+
+  const getSelectedService = () => {
+    if (!selectedService) return fields?.service?.placeholder ?? "";
+    const index = services.findIndex((item) => item.id === selectedService);
+    if (index === -1) return fields?.service?.placeholder ?? "";
+    return services[index].title;
+  };
+
+  const selectService = (service: any) => {
+    setSelectedService(service.id);
+    setIsOpenDropdown(false);
+  };
 
   return (
     <div
@@ -30,24 +83,23 @@ export default function QuickContactForm() {
           }}
         >
           <p className="mb-[35px] text-3xl font-semibold text-white max-[900px]:mb-[20px] max-[900px]:text-center max-[900px]:text-2xl">
-            Contact Us
+            {contactSection?.title ?? ""}
           </p>
           <p className="font-extralight text-white max-[900px]:text-center">
-            Discover how our commercial cleaning solutions can enhance your
-            business and create a healthier, more productive work environment!
+            {contactSection?.description ?? ""}
           </p>
           <div className="mb-8 mt-[30px] flex items-center gap-8">
             <div className="flex h-[50px] w-[50px] items-center justify-center border border-solid border-white">
               <Phone />
             </div>
-            <p className="font-medium text-white">(650) 546 - 1965</p>
+            <p className="font-medium text-white">{general?.phone ?? ""}</p>
           </div>
           <div className="flex items-center gap-8">
             <div className="flex h-[50px] w-[50px] items-center justify-center border border-solid border-white">
               <Marker />
             </div>
             <p className="font-medium text-white">
-              1152 70th Ave, Oakland, CA 94621
+              {contactSection?.location ?? ""}
             </p>
           </div>
         </div>
@@ -63,13 +115,13 @@ export default function QuickContactForm() {
           <div className="grid grid-cols-2 gap-10 max-[900px]:grid-cols-1 max-[900px]:gap-4">
             <div className="flex flex-col gap-2">
               <p className="text-base font-light text-[#2F62AD]">
-                Company Name
+                {fields?.name?.label}
               </p>
               <input
                 className={cn(
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
                 )}
-                placeholder="Enter company name"
+                placeholder={fields?.name?.placeholder}
                 value={company}
                 onChange={(e) => {
                   setCompany(e.target.value);
@@ -77,12 +129,14 @@ export default function QuickContactForm() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-base font-light text-[#2F62AD]">Email</p>
+              <p className="text-base font-light text-[#2F62AD]">
+                {fields?.email?.label}
+              </p>
               <input
                 className={cn(
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
                 )}
-                placeholder="Enter email"
+                placeholder={fields?.email?.placeholder}
                 value={phone}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -93,13 +147,13 @@ export default function QuickContactForm() {
           <div className="mt-[30px] grid grid-cols-2 gap-10 max-[900px]:mt-[20px] max-[900px]:grid-cols-1 max-[900px]:gap-4">
             <div className="flex flex-col gap-2">
               <p className="text-base font-light text-[#2F62AD]">
-                Phone Number
+                {fields?.phone?.label}
               </p>
               <input
                 className={cn(
                   "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
                 )}
-                placeholder="Enter phone number"
+                placeholder={fields?.phone?.placeholder}
                 value={phone}
                 onChange={(e) => {
                   setPhone(e.target.value);
@@ -108,31 +162,53 @@ export default function QuickContactForm() {
             </div>
             <div className="flex flex-col gap-2">
               <p className="text-base font-light text-[#2F62AD]">
-                Services Needed
+                {fields?.service?.label}
               </p>
-              <input
-                className={cn(
-                  "w-full border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
-                )}
-                placeholder="Select a service"
-                value={phone}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
+              <DropdownMenu
+                open={isOpenDropdown}
+                onOpenChange={setIsOpenDropdown}
+              >
+                <DropdownMenuTrigger
+                  asChild
+                  onClick={() => {
+                    setIsOpenDropdown(true);
+                  }}
+                >
+                  <div className="flex w-full cursor-pointer items-center justify-start border-[1px] border-[#2F62AD] pr-2 transition-all duration-300 hover:bg-[rgba(0,0,0,0.1)]">
+                    <p className="flex h-[42px] flex-1 flex-col justify-center px-3 font-extralight text-[#2F62AD]">
+                      {getSelectedService()}
+                    </p>
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="center"
+                  className="border-radius-[10px] overflow-y-auto bg-[#F1F7FF] p-0"
+                >
+                  {services.map((service, index) => (
+                    <div
+                      onClick={() => selectService(service)}
+                      key={index}
+                      className="cursor-pointer bg-[#F1F7FF] px-3 py-3 hover:bg-[rgba(155,155,155,0.2)]"
+                    >
+                      <p className="text-sm font-extralight text-[#2F62AD]">
+                        {service.title}
+                      </p>
+                    </div>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
           <div className="mt-[30px] max-[900px]:mt-[20px]">
             <div className="flex flex-col gap-2">
-              {/**CAMBPO notes */}
               <p className="text-base font-light text-[#2F62AD]">
-                Additional Notes
+                {fields?.notes?.label}
               </p>
               <textarea
                 className={cn(
                   "h-[100px] w-full resize-none border-[1px] border-[#2F62AD] bg-transparent px-3 py-2 font-extralight text-[#2F62AD] outline-none placeholder:text-sm placeholder:font-extralight placeholder:text-[#2F62AD]",
                 )}
-                placeholder="Enter..."
+                placeholder={fields?.notes?.placeholder}
                 value={notes}
                 onChange={(e) => {
                   setNotes(e.target.value);
