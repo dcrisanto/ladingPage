@@ -1,4 +1,7 @@
-export interface Meta {}
+export interface FieldData {
+  label: string;
+  placeholder: string;
+}
 
 export interface Picture {
   id: number;
@@ -18,6 +21,13 @@ export interface Picture {
   provider_metadata: null;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Card {
+  title: string;
+  text: string;
+  description: string;
+  image: Picture;
 }
 
 export interface InputForm {
@@ -55,19 +65,19 @@ export interface Formats {
 }
 
 export enum EXT {
-  Jpg = ".jpg",
-  PNG = ".png",
-  SVG = ".svg",
+  Jpg = '.jpg',
+  PNG = '.png',
+  SVG = '.svg',
 }
 
 export enum MIME {
-  ImageJPEG = "image/jpeg",
-  ImagePNG = "image/png",
-  ImageSVGXML = "image/svg+xml",
+  ImageJPEG = 'image/jpeg',
+  ImagePNG = 'image/png',
+  ImageSVGXML = 'image/svg+xml',
 }
 
 export enum Provider {
-  AwsS3 = "aws-s3",
+  AwsS3 = 'aws-s3',
 }
 
 export interface Large {

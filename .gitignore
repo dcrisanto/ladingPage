@@ -50,3 +50,4 @@ next-env.d.ts
 # ⚡ Configuración del editor (si usas VSCode o WebStorm)
 .vscode/
 .idea/
+yarn.lock
