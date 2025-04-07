@@ -48,6 +48,9 @@ export async function getGeneralData() {
     socialLinks: {
       populate: "*",
     },
+    servicesList: {
+      populate: "*",
+    },
   };
 
   const instance = createStrapiApiInstance(baseURL, apiToken);
