@@ -38,7 +38,17 @@ export type HomeProblemsWeSolve = HomeGenericSection;
 
 export type HomeOurServicesImpact = HomeGenericSection;
 
-export type HomeServices = HomeGenericSection;
+export type HomeServices = {
+  title: string;
+  services: Array<{
+    title: string;
+    image: Picture;
+    descriptions: Array<{
+      title: string;
+      description: string;
+    }>;
+  }>;
+};
 
 export type HomeSpecializedServices = HomeGenericSection;
 export interface HomeAbout {

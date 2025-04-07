@@ -4,7 +4,6 @@ import { ContactSignup, QuoteRequest } from "@/app/interfaces/forms";
 import { GeneralData } from "@/app/interfaces/general";
 import { HomeData } from "@/app/interfaces/home";
 import axios from "axios";
-import { p } from "framer-motion/client";
 
 const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL;
 const apiToken = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -98,7 +97,7 @@ export async function getHomeData() {
     },
     services: {
       populate: {
-        cards: {
+        services: {
           populate: "*",
         },
       },
