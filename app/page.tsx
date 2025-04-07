@@ -1,6 +1,7 @@
 import AboutUs from "./components/organisms/AboutUs";
 import Cover from "./components/organisms/Cover";
 import ImpactOurServices from "./components/organisms/ImpactOurServices";
+import MapSection from "./components/organisms/MapSection";
 import ProblemsWeSolve from "./components/organisms/ProblemsWeSolve";
 import Projects from "./components/organisms/Projects";
 import QuickContactForm from "./components/organisms/QuickContactForm";
@@ -20,6 +21,7 @@ export default async function Home() {
       <Projects />
       <Testimonials />
       <QuickContactForm />
+      <MapSection />
     </main>
   );
 }

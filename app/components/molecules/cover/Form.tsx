@@ -28,43 +28,15 @@ export default function Form() {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [formError, setFormError] = useState<any>({});
   const fields = home?.quoteRequestForm?.fields;
-
-  const services = [
-    {
-      title: "Office Cleaning",
-      id: "Office Cleaning",
-    },
-    {
-      title: "Restroom Cleaning",
-      id: "Restroom Cleaning",
-    },
-    {
-      title: "Common Area Cleaning",
-      id: "Common Area Cleaning",
-    },
-    {
-      title: "Deep Cleaning",
-      id: "Deep Cleaning",
-    },
-    {
-      title: "Post-Event Cleaning",
-      id: "Post-Event Cleaning",
-    },
-    {
-      title: "Advanced Sanitization & Disinfection",
-      id: "Advanced Sanitization & Disinfection",
-    },
-    {
-      title: "Office Plant Care",
-      id: "Office Plant Care",
-    },
-  ];
+  const services = general?.servicesList ?? [];
 
   const getSelectedService = () => {
     if (!selectedService) return fields?.service?.placeholder ?? "";
-    const index = services.findIndex((item) => item.id === selectedService);
+    const index = services.findIndex(
+      (item: any) => item.id === selectedService,
+    );
     if (index === -1) return fields?.service?.placeholder ?? "";
-    return services[index].title;
+    return services[index]?.label ?? "";
   };
 
   const selectService = (service: any) => {
@@ -212,14 +184,14 @@ export default function Form() {
                   align="center"
                   className="border-radius-[10px] overflow-y-auto bg-[#F1F7FF] p-0"
                 >
-                  {services.map((service, index) => (
+                  {services?.map((service: any, index: number) => (
                     <div
                       onClick={() => selectService(service)}
                       key={index}
                       className="cursor-pointer bg-[#F1F7FF] px-3 py-3 hover:bg-[rgba(155,155,155,0.2)]"
                     >
                       <p className="text-sm font-extralight text-[#2F62AD]">
-                        {service.title}
+                        {service?.label}
                       </p>
                     </div>
                   ))}
