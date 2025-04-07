@@ -11,7 +11,7 @@ import ServiceItem from "../molecules/services/ServiceItem";
 export default function Services() {
   const { home } = useGenerals();
   const servicesSection = home?.services;
-  const services = servicesSection?.cards;
+  const services = servicesSection?.services;
 
   return (
     <div className="mb-10" id="services">
