@@ -1,3 +1,6 @@
+"use client";
+
+import { useGenerals } from "@/app/context/generals.context";
 import Star from "@/app/icons/Star";
 import Image from "next/image";
 import React from "react";
@@ -8,71 +11,9 @@ import img4 from "../../../public/images/specializedServices/4.png";
 import ServiceItem from "../molecules/specializedServices/ServiceItem";
 
 export default function SpecializedServices() {
-  const services = [
-    {
-      title: "Deep Cleaning",
-      image: img1,
-      options: [
-        {
-          subtitle: "Carpet & Upholstery Cleaning",
-          description:
-            "Advanced washing techniques to remove dirt, stains, and bacteria.",
-        },
-        {
-          subtitle: "Floor Polishing & Waxing",
-          description:
-            "Enhancing floor durability and appearance with protective coatings.",
-        },
-        {
-          subtitle: "Glass & Window Cleaning",
-          description:
-            "Eliminating smudges and streaks for a clear, professional look.",
-        },
-      ],
-    },
-    {
-      title: "Post-Event Cleaning",
-      image: img2,
-      options: [
-        {
-          subtitle: "Waste Removal",
-          description:
-            "Efficient collection and disposal of event-related trash.",
-        },
-        {
-          subtitle: "Furniture & Floor Cleaning",
-          description:
-            "Dusting, wiping, and sanitizing all surfaces for a fresh environment.",
-        },
-      ],
-    },
-    {
-      title: "Advanced Sanitization & Disinfection",
-      image: img3,
-      options: [
-        {
-          subtitle: "Certified Disinfectants",
-          description:
-            "Safe and effective products to eliminate germs and bacteria.",
-        },
-        {
-          subtitle: "Fogging & Spraying",
-          description:
-            "Specialized methods for high-risk areas to prevent virus and bacteria spread.",
-        },
-      ],
-    },
-    {
-      title: "Office Plant Care",
-      image: img4,
-      options: [
-        {
-          subtitle: "Watering & Maintenance",
-          description: "Ensuring fresh and vibrant indoor greenery.",
-        },
-      ],
-    },
-  ];
+  const { home } = useGenerals();
+  const specializedServicesSection = home?.specializedServices;
+  const specializedServices = specializedServicesSection?.cards;
 
   return (
     <div
@@ -82,10 +23,10 @@ export default function SpecializedServices() {
       }}
     >
       <p className="mb-12 text-center text-3xl font-semibold text-[#1A3666] max-[900px]:mb-8 max-[900px]:text-2xl">
-        Specialized Cleaning Services
+        {specializedServicesSection?.title ?? ""}
       </p>
       <div className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 mx-28 flex gap-4 overflow-x-auto max-xl:mx-12 max-[1100px]:mx-10 max-[1100px]:mx-6 max-[900px]:flex-col">
-        {services.map((service, index) => (
+        {specializedServices.map((service: any, index: number) => (
           <ServiceItem service={service} key={index} />
         ))}
       </div>

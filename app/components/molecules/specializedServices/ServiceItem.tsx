@@ -2,7 +2,7 @@
 
 import Minus from "@/app/icons/Minus";
 import Plus from "@/app/icons/Plus";
-import { cn } from "@/app/utils";
+import { cn, getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -22,8 +22,9 @@ export default function ServiceItem({ service }: Props) {
       <div className="relative h-[400px]">
         <div className="absolute inset-0 z-[-5]">
           <Image
-            src={service.image}
+            src={getFormattedImageUrl(service?.image?.url) ?? ""}
             alt=""
+            layout="fill"
             style={{
               objectFit: "cover",
               height: "100%",
@@ -41,8 +42,8 @@ export default function ServiceItem({ service }: Props) {
                 </div>
                 <div className="flex-1">
                   <p className="font-light text-white">
-                    <span className="font-medium">{opt.subtitle}: </span>
-                    {opt.description}
+                    <span className="font-medium">{opt?.title ?? ""}: </span>
+                    {opt?.description ?? ""}
                   </p>
                 </div>
               </div>
@@ -60,8 +61,8 @@ export default function ServiceItem({ service }: Props) {
                   </div>
                   <div className="flex-1">
                     <p className="font-light text-white">
-                      <span className="font-medium">{opt.subtitle}: </span>
-                      {opt.description}
+                      <span className="font-medium">{opt?.title ?? ""}: </span>
+                      {opt?.description ?? ""}
                     </p>
                   </div>
                 </div>
