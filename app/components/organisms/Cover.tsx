@@ -1,3 +1,7 @@
+"use client";
+
+import { useGenerals } from "@/app/context/generals.context";
+import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React from "react";
 import coverImage from "../../../public/images/cover.png";
@@ -5,6 +9,10 @@ import CoverMessage from "../molecules/cover/CoverMessage";
 import Form from "../molecules/cover/Form";
 
 export default function Cover() {
+  const { home } = useGenerals();
+  const banner = home?.banner;
+  const desktopImageUrl = banner?.desktopImage?.url;
+
   return (
     <div
       className="relative mt-[var(--app-header-height)]"
@@ -20,8 +28,9 @@ export default function Cover() {
         }}
       >
         <Image
-          src={coverImage}
+          src={getFormattedImageUrl(desktopImageUrl) ?? ""}
           alt=""
+          layout="fill"
           style={{
             objectFit: "cover",
             height: "100%",
