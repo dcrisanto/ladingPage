@@ -1,18 +1,22 @@
 "use client";
 
+import { useGenerals } from "@/app/context/generals.context";
 import Quote from "@/app/icons/Quote";
 import Star from "@/app/icons/Star";
-import { cn } from "@/app/utils";
+import { cn, getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import img from "../../../public/images/testimonial.png";
 
 export default function Testimonials() {
+  const { home } = useGenerals();
+  const testimonialsSection = home?.testimonials;
+  const testimonials = testimonialsSection?.cards ?? [];
   const [selectedStep, setSelectedStep] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  const testimonials = [
+  /*   const testimonials = [
     {
       image: {
         url: img,
@@ -99,22 +103,7 @@ export default function Testimonials() {
       testimonial:
         "We love their eco-friendly approach. It’s great to have a clean office while knowing we’re being environmentally responsible.",
     },
-  ];
-
-  /*   const handleScroll = () => {
-    if (carouselRef.current) {
-      const carouselWidth = carouselRef.current.scrollWidth;
-      const containerWidth = carouselRef.current.offsetWidth;
-      const scrollPosition = carouselRef.current.scrollLeft;
-
-      const index = Math.floor(
-        (scrollPosition / (carouselWidth - containerWidth)) *
-          groupedTestimonials.length,
-      );
-      setSelectedStep(index);
-    }
-  };
- */
+  ]; */
 
   const handleScroll = () => {
     if (scrollTimeout.current) {
@@ -134,7 +123,7 @@ export default function Testimonials() {
 
         setSelectedStep(index);
       }
-    }, 150); // 150-200ms es un buen valor para detectar "scroll end"
+    }, 150);
   };
 
   useEffect(() => {
@@ -180,14 +169,13 @@ export default function Testimonials() {
         </div>
         <div className="pt-20 max-[900px]:pt-10">
           <p className="mb-8 text-center text-3xl font-semibold text-[#2F62AD] max-[900px]:mb-6 max-[900px]:text-2xl">
-            Testimonials
+            {testimonialsSection?.title ?? ""}
           </p>
         </div>
       </div>
       <div className="mb-[30px] flex items-center justify-center">
         <p className="text-center font-light text-[#1A3666] max-[900px]:max-w-[100vw] max-[900px]:max-w-[400px] max-[900px]:px-2">
-          See what our satisfied clients have to say about Brightview’s
-          services:
+          {testimonialsSection?.description ?? ""}
         </p>
       </div>
       <div
@@ -199,7 +187,7 @@ export default function Testimonials() {
             className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 grid min-w-full snap-center grid-cols-3 gap-10 px-28 max-xl:gap-8 max-xl:px-16 max-[1100px]:gap-6 max-[1100px]:px-10 max-[950px]:px-4 max-[850px]:flex max-[850px]:flex-col"
             key={i}
           >
-            {group.map((testimonial, index) => (
+            {group.map((testimonial: any, index: number) => (
               <div
                 key={index}
                 className="flex items-start"
@@ -219,28 +207,33 @@ export default function Testimonials() {
                 </div>
                 <div className="flex-1 px-[24px] py-[35px] max-[850px]:px-[18px] max-[850px]:py-[25px]">
                   <div className="flex items-center justify-start gap-4">
-                    <div className="h-[60px] w-[60px] max-[850px]:h-[45px] max-[850px]:w-[45px]">
-                      <Image
-                        src={testimonial.image}
-                        alt=""
-                        style={{
-                          objectFit: "cover",
-                          height: "100%",
-                          width: "100%",
-                        }}
-                      />
+                    <div className="relative h-[60px] w-[60px] max-[850px]:h-[45px] max-[850px]:w-[45px]">
+                      {getFormattedImageUrl(testimonial?.photo?.url) && (
+                        <Image
+                          src={
+                            getFormattedImageUrl(testimonial?.photo?.url) ?? ""
+                          }
+                          alt=""
+                          layout="fill"
+                          style={{
+                            objectFit: "cover",
+                            height: "100%",
+                            width: "100%",
+                          }}
+                        />
+                      )}
                     </div>
                     <div className="flex-1">
                       <p className="text-medium text-[#1A3666]">
-                        {testimonial.name}
+                        {testimonial?.name ?? ""}
                       </p>
                       <p className="font-regular text-[#1A3666]">
-                        {testimonial.position}
+                        {testimonial?.position ?? ""}
                       </p>
                     </div>
                   </div>
                   <p className="mt-[20px] font-extralight text-[#1A3666]">
-                    "{testimonial.testimonial}"
+                    "{testimonial?.testimonial ?? ""}"
                   </p>
                 </div>
               </div>
