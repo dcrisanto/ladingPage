@@ -11,9 +11,6 @@ export const Logo = () => {
     ? `${baseApi}${general.logo.url}` // Convertimos la URL relativa en absoluta
     : "/default-logo.svg"; // Imagen por defecto si no hay logo
 
-
-  console.log("Logo URL:", general.logo.url); // Para verificar en consola
-
   return (
     <Link href="/">
       {logoURL ? (

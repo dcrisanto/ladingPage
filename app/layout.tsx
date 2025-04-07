@@ -28,8 +28,6 @@ export default async function RootLayout({
   const generalData = await getGeneralData();
   const homeData = await getHomeData();
 
-  console.log({ generalData, homeData });
-
   return (
     <html>
       <body className="w-full">

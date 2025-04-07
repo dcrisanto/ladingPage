@@ -3,7 +3,6 @@ import { FieldData, Picture } from "./shared";
 export interface IHome {
   data: HomeData;
 }
-
 export interface HomeData {
   id: number;
   createdAt: string;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useGenerals } from "@/app/context/generals.context";
+import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React from "react";
 import img1 from "../../../public/images/impactOurServices/1.png";
@@ -40,7 +41,7 @@ export default function ImpactOurServices() {
     <div className="relative mt-20 pb-16 pt-16 max-[900px]:mt-10 max-[900px]:pt-12">
       <div className="absolute inset-0 z-[-5]">
         <Image
-          src={coverImage}
+          src={getFormattedImageUrl(ourServicesImpact?.image?.url) ?? ""}
           alt="Background"
           layout="fill"
           objectFit="cover"
@@ -58,10 +59,11 @@ export default function ImpactOurServices() {
               className="flex flex-col gap-3 border border-solid border-[white] px-6 py-8 max-[900px]:px-4 max-[900px]:py-6"
             >
               <div className="flex items-center justify-center">
-                <div className="flex h-[60px] w-[60px] items-center justify-center max-[900px]:h-[40px] max-[900px]:w-[40px]">
+                <div className="relative flex h-[60px] w-[60px] items-center justify-center max-[900px]:h-[40px] max-[900px]:w-[40px]">
                   <Image
-                    src={option.img}
+                    src={getFormattedImageUrl(option?.image?.url) ?? ""}
                     alt={option.title}
+                    layout="fill"
                     style={{
                       objectFit: "contain",
                       height: "100%",
