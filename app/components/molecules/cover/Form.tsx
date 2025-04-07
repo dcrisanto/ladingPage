@@ -5,7 +5,10 @@ import CalendarClock from "@/app/icons/CalendarClock";
 import Cellphone from "@/app/icons/Cellphone";
 import SimpleStart from "@/app/icons/SimpleStart";
 import SquareChevronDown from "@/app/icons/SquareChevronDown";
+import { QuoteRequest } from "@/app/interfaces/forms";
 import { cn, validationEmail } from "@/app/utils";
+import { createQuoteRequestData } from "@/lib/strapiApi";
+import { CircularProgress } from "@mui/material";
 import React, { useState } from "react";
 import DatePickermodal from "../../organisms/DatePickermodal";
 import MeetConfirmationModal from "../../organisms/MeetConfirmationModal";
@@ -23,48 +26,20 @@ export default function Form() {
   const [selectedService, setSelectedService] = useState("");
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const [showDatePickerModal, setShowDatePickerModal] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [loading, setLoading] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [formError, setFormError] = useState<any>({});
   const fields = home?.quoteRequestForm?.fields;
-
-  const services = [
-    {
-      title: "Office Cleaning",
-      id: "Office Cleaning",
-    },
-    {
-      title: "Restroom Cleaning",
-      id: "Restroom Cleaning",
-    },
-    {
-      title: "Common Area Cleaning",
-      id: "Common Area Cleaning",
-    },
-    {
-      title: "Deep Cleaning",
-      id: "Deep Cleaning",
-    },
-    {
-      title: "Post-Event Cleaning",
-      id: "Post-Event Cleaning",
-    },
-    {
-      title: "Advanced Sanitization & Disinfection",
-      id: "Advanced Sanitization & Disinfection",
-    },
-    {
-      title: "Office Plant Care",
-      id: "Office Plant Care",
-    },
-  ];
+  const services = general?.servicesList ?? [];
 
   const getSelectedService = () => {
     if (!selectedService) return fields?.service?.placeholder ?? "";
-    const index = services.findIndex((item) => item.id === selectedService);
+    const index = services.findIndex(
+      (item: any) => item.id === selectedService,
+    );
     if (index === -1) return fields?.service?.placeholder ?? "";
-    return services[index].title;
+    return services[index]?.label ?? "";
   };
 
   const selectService = (service: any) => {
@@ -72,12 +47,31 @@ export default function Form() {
     setIsOpenDropdown(false);
   };
 
-  const getSelectedDate = () => {
-    return fields?.preferredDateTime?.placeholder ?? "";
+  const formatDateTime = (date: Date): string => {
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const year = date.getFullYear();
+
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+
+    const amPm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours === 0 ? 12 : hours;
+
+    const formattedHour = hours.toString().padStart(2, "0");
+
+    return `${month}/${day}/${year} - ${formattedHour}:${minutes} ${amPm}`;
   };
 
-  const sendInformation = () => {
+  const getSelectedDate = () => {
+    if (!selectedDate) return fields?.preferredDateTime?.placeholder ?? "";
+    return formatDateTime(selectedDate);
+  };
+
+  const sendInformation = async () => {
     let errors: any = {};
+    setFormError({});
     if (!company) {
       errors.company = true;
       errors.companyMessage = "The company name is mandatory";
@@ -94,7 +88,24 @@ export default function Form() {
       errors.service = true;
       errors.serviceMessage = "Select a service";
     } else {
-      setShowConfirmationModal(true);
+      try {
+        setLoading(true);
+        const quoteRequest: QuoteRequest = {
+          companyName: company?.trim(),
+          email: email?.trim(),
+          phone: email?.trim(),
+          service: getSelectedService(),
+          prefferedDateTime: new Date().toISOString(),
+        };
+        await createQuoteRequestData(quoteRequest);
+        setShowConfirmationModal(true);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        errors.main = true;
+        errors.mainMessage = "An error occurred, please try again";
+        console.log("Ocurrió un error: ", err);
+      }
     }
     setFormError(errors);
   };
@@ -212,14 +223,14 @@ export default function Form() {
                   align="center"
                   className="border-radius-[10px] overflow-y-auto bg-[#F1F7FF] p-0"
                 >
-                  {services.map((service, index) => (
+                  {services?.map((service: any, index: number) => (
                     <div
                       onClick={() => selectService(service)}
                       key={index}
                       className="cursor-pointer bg-[#F1F7FF] px-3 py-3 hover:bg-[rgba(155,155,155,0.2)]"
                     >
                       <p className="text-sm font-extralight text-[#2F62AD]">
-                        {service.title}
+                        {service?.label}
                       </p>
                     </div>
                   ))}
@@ -247,16 +258,23 @@ export default function Form() {
             </div>
             <div className="flex items-center justify-start">
               <div
-                className="flex h-[40px] w-full cursor-pointer items-center justify-center bg-[#2F62AD]"
+                className={cn(
+                  "flex h-[40px] w-full cursor-pointer items-center justify-center bg-[#2F62AD]",
+                )}
                 onClick={sendInformation}
               >
                 {loading ? (
-                  <></>
+                  <CircularProgress size={20} style={{ color: "white" }} />
                 ) : (
                   <p className="text-sm font-medium text-white">Send</p>
                 )}
               </div>
             </div>
+            {formError.main && formError.mainMessage && (
+              <p className="text-center text-red-500">
+                {formError?.mainMessage}
+              </p>
+            )}
           </div>
         </div>
       </div>

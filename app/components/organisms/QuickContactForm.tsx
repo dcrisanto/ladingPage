@@ -3,7 +3,9 @@
 import { useGenerals } from "@/app/context/generals.context";
 import Marker from "@/app/icons/Marker";
 import Phone from "@/app/icons/Phone";
+import { ContactSignup } from "@/app/interfaces/forms";
 import { cn, validationEmail } from "@/app/utils";
+import { createContactSignupData } from "@/lib/strapiApi";
 import { CircularProgress } from "@mui/material";
 import React, { useState } from "react";
 import {
@@ -26,43 +28,13 @@ export default function QuickContactForm() {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const fields = home?.quoteRequestForm?.fields;
   const [formError, setFormError] = useState<any>({});
-
-  const services = [
-    {
-      title: "Office Cleaning",
-      id: "Office Cleaning",
-    },
-    {
-      title: "Restroom Cleaning",
-      id: "Restroom Cleaning",
-    },
-    {
-      title: "Common Area Cleaning",
-      id: "Common Area Cleaning",
-    },
-    {
-      title: "Deep Cleaning",
-      id: "Deep Cleaning",
-    },
-    {
-      title: "Post-Event Cleaning",
-      id: "Post-Event Cleaning",
-    },
-    {
-      title: "Advanced Sanitization & Disinfection",
-      id: "Advanced Sanitization & Disinfection",
-    },
-    {
-      title: "Office Plant Care",
-      id: "Office Plant Care",
-    },
-  ];
+  const services = general?.servicesList ?? [];
 
   const getSelectedService = () => {
     if (!selectedService) return fields?.service?.placeholder ?? "";
     const index = services.findIndex((item) => item.id === selectedService);
     if (index === -1) return fields?.service?.placeholder ?? "";
-    return services[index].title;
+    return services[index]?.label ?? "";
   };
 
   const selectService = (service: any) => {
@@ -71,6 +43,7 @@ export default function QuickContactForm() {
   };
 
   const sendInformation = async () => {
+    setFormError({});
     let errors: any = {};
     if (!company) {
       errors.company = true;
@@ -88,6 +61,24 @@ export default function QuickContactForm() {
       errors.service = true;
       errors.serviceMessage = "Select a service";
     } else {
+      try {
+        setLoading(true);
+        const contactSignup: ContactSignup = {
+          additionalNotes: notes?.trim(),
+          companyName: company?.trim(),
+          email: email?.trim(),
+          phone: email?.trim(),
+          service: getSelectedService(),
+        };
+        await createContactSignupData(contactSignup);
+        setShowConfirmationModal(true);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        errors.main = true;
+        errors.mainMessage = "An error occurred, please try again";
+        console.log("Ocurrió un error: ", err);
+      }
     }
 
     setFormError(errors);
@@ -236,14 +227,14 @@ export default function QuickContactForm() {
                     align="center"
                     className="border-radius-[10px] overflow-y-auto bg-[#F1F7FF] p-0"
                   >
-                    {services.map((service, index) => (
+                    {services?.map((service, index) => (
                       <div
                         onClick={() => selectService(service)}
                         key={index}
                         className="cursor-pointer bg-[#F1F7FF] px-3 py-3 hover:bg-[rgba(155,155,155,0.2)]"
                       >
                         <p className="text-sm font-extralight text-[#2F62AD]">
-                          {service.title}
+                          {service?.label ?? ""}
                         </p>
                       </div>
                     ))}
@@ -273,7 +264,12 @@ export default function QuickContactForm() {
                 />
               </div>
             </div>
-            <div className="mt-[30px] flex items-center justify-start pb-[30px] max-[900px]:mt-[20px] max-[900px]:w-full max-[900px]:pb-[60px]">
+            <div
+              className={cn(
+                "mt-[30px] flex items-center justify-start pb-[30px] max-[900px]:mt-[20px] max-[900px]:w-full max-[900px]:pb-[60px]",
+                formError.main && "pb-[5px] max-[900px]:pb-[5px]",
+              )}
+            >
               <div
                 className="flex h-[40px] w-[320px] cursor-pointer items-center justify-center bg-[#2F62AD] max-[900px]:w-full"
                 onClick={sendInformation}
@@ -285,6 +281,11 @@ export default function QuickContactForm() {
                 )}
               </div>
             </div>
+            {formError.main && formError.mainMessage && (
+              <p className="mb-[60px] mt-1 pb-[30px] text-left text-red-500 max-[900px]:text-center">
+                {formError?.mainMessage}
+              </p>
+            )}
           </div>
         </div>
       </div>
