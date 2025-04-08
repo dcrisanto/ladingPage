@@ -18,7 +18,7 @@ export default function ServiceItem({ service }: Props) {
   };
 
   return (
-    <div className="group min-w-[380px] cursor-pointer">
+    <div className="group min-w-[300px] cursor-pointer">
       <div className="relative h-[400px]">
         <div className="absolute inset-0 z-[-5]">
           {getFormattedImageUrl(service?.image?.url) && (

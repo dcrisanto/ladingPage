@@ -87,14 +87,14 @@ export default function MeetOurTeam() {
           </div>
         </div>
       </div>
-      <div className="relative">
+      <div className="relative mx-5 lg:mx-0 tablet:mx-5">
         <div
           className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 relative flex snap-x snap-mandatory overflow-x-auto"
           ref={carouselRef}
         >
           {images.map((image: any, index: number) => (
             <div
-              className="relative z-[-1] h-[350px] min-w-full snap-center max-[1000px]:min-h-[300px]"
+              className="relative z-[-1] h-[350px] min-w-full snap-center tablet:h-[450px] max-[1000px]:min-h-[300px]"
               key={index}
             >
               {getFormattedImageUrl(image?.url) && (

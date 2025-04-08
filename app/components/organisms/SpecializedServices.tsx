@@ -2,12 +2,7 @@
 
 import { useGenerals } from "@/app/context/generals.context";
 import Star from "@/app/icons/Star";
-import Image from "next/image";
 import React from "react";
-import img1 from "../../../public/images/specializedServices/1.png";
-import img2 from "../../../public/images/specializedServices/2.png";
-import img3 from "../../../public/images/specializedServices/3.png";
-import img4 from "../../../public/images/specializedServices/4.png";
 import ServiceItem from "../molecules/specializedServices/ServiceItem";
 
 export default function SpecializedServices() {
