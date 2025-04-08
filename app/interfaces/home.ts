@@ -1,4 +1,4 @@
-import { FieldData, Picture } from "./shared";
+import { Description, FieldData, Picture } from "./shared";
 
 export interface IHome {
   data: HomeData;
@@ -40,14 +40,13 @@ export type HomeOurServicesImpact = HomeGenericSection;
 
 export type HomeServices = {
   title: string;
-  services: Array<{
-    title: string;
-    image: Picture;
-    descriptions: Array<{
-      title: string;
-      description: string;
-    }>;
-  }>;
+  services: ServicesItem[];
+};
+
+export type ServicesItem = {
+  title: string;
+  image: Picture;
+  descriptions: Description[];
 };
 
 export type HomeSpecializedServices = HomeGenericSection;

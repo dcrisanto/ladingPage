@@ -1,7 +1,6 @@
 "use client";
 
 import { useGenerals } from "@/app/context/generals.context";
-import Calendar from "@/app/icons/Calendar";
 import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React from "react";

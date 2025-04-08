@@ -5,6 +5,12 @@ import { EqualIcon } from "@/app/icons/Equal";
 import Star from "@/app/icons/Star";
 import React from "react";
 
+interface Card {
+   title: string;
+   subtitle: string;
+   description: string;
+}
+
 function ProblemsWeSolve() {
   const { home } = useGenerals();
   const problemsWeSolve = home?.problemsWeSolve;
@@ -40,7 +46,7 @@ function ProblemsWeSolve() {
         </div>
       </div>
       <div className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 grid grid-cols-3 gap-10 px-28 max-xl:gap-8 max-xl:px-16 max-[1100px]:gap-6 max-[1100px]:px-10 max-[900px]:flex max-[900px]:flex-row max-[900px]:overflow-x-auto max-[900px]:px-6 max-[900px]:py-6">
-        {options.map((option: any, index: number) => (
+        {options.map((option: Card, index: number) => (
           <div
             key={index}
             className="px-6 pb-7 pt-8 max-[900px]:min-w-[100%]"

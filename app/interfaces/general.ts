@@ -1,4 +1,4 @@
-import { Picture } from "./shared";
+import { Picture, ServicesList } from "./shared";
 
 export interface GeneralData {
   title: string;
@@ -7,21 +7,19 @@ export interface GeneralData {
   header: HeaderData;
   location: string;
   email: string;
+  whatsappPhone: string;
   socialLinks: Array<{
     icon: Picture;
     href: string;
     isExternal: boolean;
   }>;
-  servicesList: Array<{
-    label: string;
-    value: string;
-  }>;
+  servicesList: ServicesList[]
 }
 
 export interface HeaderData {
   logo: {
     text: string;
-    image: string;
+    image: Picture;
   };
   navigation: Array<{
     text: string;

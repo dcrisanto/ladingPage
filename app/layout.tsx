@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Footer from "./components/ui/Footer";
 import Header from "./components/ui/Header";
 import { GeneralsProvider } from "./context/generals.context";
-import Whatsapp from "./components/atoms/Whatsapp";
+import Whatsapp from "./components/ui/Whatsapp";
 
 export const metadata: Metadata = {
   title: "Brightview",

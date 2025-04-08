@@ -6,7 +6,7 @@ import Star from "@/app/icons/Star";
 import React from "react";
 
 export default function MapSection() {
-  const { home, general } = useGenerals();
+  const { home } = useGenerals();
   const mapSection = home?.map;
   const serviceAreas = mapSection?.serviceAreas ?? [];
 

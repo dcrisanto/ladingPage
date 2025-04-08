@@ -1,6 +1,5 @@
 "use client";
 
-// Asegura que se ejecuta en el cliente
 import {
   createContext,
   FC,
@@ -39,7 +38,6 @@ const initialState: ControllerState = {
 interface ControllerState {
   general: GeneralData;
   home: HomeData | any;
-  // multilanguage: MultilanguageData;
 }
 
 // Crear el contexto con el estado inicial

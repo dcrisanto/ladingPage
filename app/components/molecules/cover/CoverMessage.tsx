@@ -1,13 +1,14 @@
 "use client";
 
 import { useGenerals } from "@/app/context/generals.context";
+import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React from "react";
-import coverImage from "../../../../public/images/cover.png";
 
 function CoverMessage() {
   const { home, general } = useGenerals();
   const banner = home?.banner;
+  const desktopImageUrl = banner?.desktopImage?.url;
 
   return (
     <>
@@ -70,15 +71,18 @@ function CoverMessage() {
             height: "360px",
           }}
         >
-          <Image
-            src={coverImage}
-            alt=""
-            style={{
-              objectFit: "cover",
-              height: "100%",
-              width: "100%",
-            }}
-          />
+          {getFormattedImageUrl(desktopImageUrl) && (
+             <Image
+             src={getFormattedImageUrl(desktopImageUrl) ?? ""}
+             alt=""
+             layout="fill"
+             style={{
+               objectFit: "cover",
+               height: "100%",
+               width: "100%",
+             }}
+           />       
+          )}
         </div>
       </div>
     </>
