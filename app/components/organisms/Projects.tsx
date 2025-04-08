@@ -6,10 +6,7 @@ import Star from "@/app/icons/Star";
 import { cn, getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useState } from "react";
-import after1 from "../../../public/images/projects/after1.png";
-import after2 from "../../../public/images/projects/after2.png";
-import before1 from "../../../public/images/projects/before1.png";
-import before2 from "../../../public/images/projects/before2.png";
+
 
 export default function Projects() {
   const { home } = useGenerals();
@@ -17,20 +14,9 @@ export default function Projects() {
   const projects = projectsSection?.projects ?? [];
   const [selectedProject, setSelectedProject] = useState(0);
 
-  /*   const options = [
-    {
-      before: before1,
-      after: after1,
-    },
-    {
-      before: before2,
-      after: after2,
-    },
-  ]; */
-
   return (
     <div
-      id="proyects"
+      id="projects"
       className="relative mb-10 bg-[#2f62ad1f] pb-16"
       style={{
         clipPath: "polygon(100% 0, 100% 92%, 97% 100%, 0 100%, 0 0)",

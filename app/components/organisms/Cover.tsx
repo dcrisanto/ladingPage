@@ -4,7 +4,6 @@ import { useGenerals } from "@/app/context/generals.context";
 import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React from "react";
-import coverImage from "../../../public/images/cover.png";
 import CoverMessage from "../molecules/cover/CoverMessage";
 import Form from "../molecules/cover/Form";
 

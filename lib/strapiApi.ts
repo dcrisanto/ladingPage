@@ -24,9 +24,6 @@ const createStrapiApiInstance = (
 };
 
 export async function getGeneralData() {
-  console.log("BASE URL:", baseURL);
-  console.log("TOKEN:", apiToken);
-
   const populate = {
     header: {
       populate: {

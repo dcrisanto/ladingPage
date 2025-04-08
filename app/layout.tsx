@@ -1,11 +1,10 @@
 import "./styles/globals.css";
 import { getGeneralData, getHomeData } from "@/lib/strapiApi";
 import { Metadata } from "next";
-import Head from "next/head";
-import { Navbar } from "./components/molecules";
 import Footer from "./components/ui/Footer";
 import Header from "./components/ui/Header";
 import { GeneralsProvider } from "./context/generals.context";
+import Whatsapp from "./components/atoms/Whatsapp";
 
 export const metadata: Metadata = {
   title: "Brightview",
@@ -39,6 +38,7 @@ export default async function RootLayout({
         >
           <Header />
           {children}
+          <Whatsapp />
           <Footer />
         </GeneralsProvider>
       </body>

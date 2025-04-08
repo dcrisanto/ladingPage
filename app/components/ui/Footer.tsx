@@ -29,12 +29,14 @@ export default function Footer() {
   return (
     <div className="flex items-center justify-between bg-[#323232] px-28 py-20 max-xl:px-16 max-[1100px]:px-10 max-[900px]:block max-[900px]:px-6 max-[900px]:py-12">
       <div className="flex items-center gap-12 max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-8">
-        <div className="flex items-center gap-4">
-          <Marker />
-          <p className="text-sm font-medium text-white">
-            {general?.location ?? ""}
-          </p>
-        </div>
+        <a href={`${home.contact.locationUrl}`} target="_blank" rel="noopener noreferrer">
+          <div className="flex items-center gap-4">
+            <Marker />
+            <p className="text-sm font-medium text-white">
+              {general?.location ?? ""}
+            </p>
+          </div>
+        </a>
         <div className="flex items-center gap-4">
           <RingPhone />
           <p className="text-sm font-medium text-white">
