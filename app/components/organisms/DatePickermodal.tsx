@@ -44,9 +44,9 @@ function DatePickermodal({
     } else if (type === "minute") {
       setMinute((prev) => {
         if (direction === "up") {
-          return prev === 0 ? 30 : 0;
+          return prev === 90 ? 0 : prev + 30;
         } else {
-          return prev === 0 ? 30 : 0;
+          return prev === 0 ? 90 : prev - 30;
         }
       });
     } else if (type === "ampm") {

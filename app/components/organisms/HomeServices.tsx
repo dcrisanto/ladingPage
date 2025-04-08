@@ -1,5 +1,6 @@
 "use client";
 
+import { Picture } from "@/app/interfaces/shared";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -11,7 +12,7 @@ interface HomeBannerProps {
     title: string;
     text: string;
     description: string;
-    image: any
+    image: Picture
   }
 
 

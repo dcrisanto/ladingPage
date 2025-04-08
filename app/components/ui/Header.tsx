@@ -9,7 +9,6 @@ import GeneralMenu from "../molecules/header/GeneralMenu";
 import Navbar from "../organisms/Navbar";
 
 export default function Header() {
-  const { general } = useGenerals();
   const [showMenu, setShowMenu] = useState(false);
 
   return (

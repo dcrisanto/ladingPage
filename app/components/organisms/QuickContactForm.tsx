@@ -115,9 +115,11 @@ export default function QuickContactForm() {
               <p className="font-medium text-white">{general?.phone ?? ""}</p>
             </div>
             <div className="flex items-center gap-8">
-              <div className="flex h-[50px] w-[50px] items-center justify-center border border-solid border-white">
-                <Marker />
-              </div>
+              <a href={`${contactSection.locationUrl}`} target="_blank" rel="noopener noreferrer">
+                <div className="flex h-[50px] w-[50px] items-center justify-center border border-solid border-white">
+                  <Marker />
+                </div>
+              </a>
               <p className="font-medium text-white">
                 {general?.location ?? ""}
               </p>
@@ -130,7 +132,7 @@ export default function QuickContactForm() {
             }}
           >
             <p className="mb-[35px] text-3xl font-medium text-[#1A3666] max-[900px]:text-center max-[900px]:text-2xl">
-              Quick Contact Form
+              {home?.quoteRequestForm?.titleQuote}
             </p>
             <div className="grid grid-cols-2 gap-10 max-[900px]:grid-cols-1 max-[900px]:gap-4">
               <div className="flex flex-col gap-2">
