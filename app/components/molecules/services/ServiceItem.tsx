@@ -2,12 +2,15 @@
 
 import Minus from "@/app/icons/Minus";
 import Plus from "@/app/icons/Plus";
+import { ServicesItem } from "@/app/interfaces/home";
+import { Description } from "@/app/interfaces/shared";
 import { cn, getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useState } from "react";
 
+
 interface Props {
-  service: any;
+  service: ServicesItem;
 }
 
 function ServiceItem({ service }: Props) {
@@ -41,7 +44,7 @@ function ServiceItem({ service }: Props) {
         >
           <div className="absolute inset-0 z-[-1] bg-primary opacity-[0.8]" />
           <div className="flex h-full flex-col items-center justify-center gap-4">
-            {service?.descriptions?.map((opt: any, index: number) => (
+            {service?.descriptions?.map((opt: Description, index: number) => (
               <div key={index} className="flex items-start gap-3 px-10">
                 <div className="mt-[9px]">
                   <div className="h-[4px] w-[4px] rounded-full bg-white" />
@@ -60,7 +63,7 @@ function ServiceItem({ service }: Props) {
           <div className={cn("opacity-1 h-full")}>
             <div className="absolute inset-0 z-[-1] bg-primary opacity-[0.8]" />
             <div className="flex h-full flex-col items-center justify-center gap-4">
-              {service?.descriptions?.map((opt: any, index: number) => (
+              {service?.descriptions?.map((opt: Description, index: number) => (
                 <div key={index} className="flex items-start gap-3 px-10">
                   <div className="mt-[9px]">
                     <div className="h-[4px] w-[4px] rounded-full bg-white" />

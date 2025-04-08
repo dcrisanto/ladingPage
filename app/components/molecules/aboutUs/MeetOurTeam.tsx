@@ -2,6 +2,7 @@
 
 import { useGenerals } from "@/app/context/generals.context";
 import Star from "@/app/icons/Star";
+import { Picture } from "@/app/interfaces/shared";
 import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -92,7 +93,7 @@ export default function MeetOurTeam() {
           className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent hover:scrollbar-thumb-gray-500 relative flex snap-x snap-mandatory overflow-x-auto"
           ref={carouselRef}
         >
-          {images.map((image: any, index: number) => (
+          {images.map((image: Picture, index: number) => (
             <div
               className="relative z-[-1] h-[350px] min-w-full snap-center tablet:h-[450px] max-[1000px]:min-h-[300px]"
               key={index}
@@ -114,7 +115,7 @@ export default function MeetOurTeam() {
         </div>
         <div className="absolute bottom-[10px] z-[50] flex w-full items-center justify-center">
           <div className="flex flex-row items-center justify-center gap-4 border border-[2px] border-solid border-white px-3 py-2">
-            {images.map((dot: any, index: number) => (
+            {images.map((dot: Picture, index: number) => (
               <div
                 onClick={() => {
                   setSelectedStep(index);

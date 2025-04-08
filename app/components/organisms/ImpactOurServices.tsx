@@ -4,11 +4,7 @@ import { useGenerals } from "@/app/context/generals.context";
 import { getFormattedImageUrl } from "@/app/utils";
 import Image from "next/image";
 import React from "react";
-import img1 from "../../../public/images/impactOurServices/1.png";
-import img2 from "../../../public/images/impactOurServices/2.png";
-import img3 from "../../../public/images/impactOurServices/3.png";
-import img4 from "../../../public/images/impactOurServices/4.png";
-import coverImage from "../../../public/images/impactOurServices/background.jpeg";
+
 
 export default function ImpactOurServices() {
   const { home } = useGenerals();

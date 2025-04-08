@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/Dropdown";
 import MeetConfirmationModal from "./MeetConfirmationModal";
+import { Errors, ServicesList } from "@/app/interfaces/shared";
 
 export default function QuickContactForm() {
   const { home, general } = useGenerals();
@@ -37,14 +38,14 @@ export default function QuickContactForm() {
     return services[index]?.label ?? "";
   };
 
-  const selectService = (service: any) => {
+  const selectService = (service: ServicesList) => {
     setSelectedService(service.id);
     setIsOpenDropdown(false);
   };
 
   const sendInformation = async () => {
     setFormError({});
-    let errors: any = {};
+    const errors: Errors = {};
     if (!company) {
       errors.company = true;
       errors.companyMessage = "The company name is mandatory";

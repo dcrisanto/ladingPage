@@ -42,12 +42,30 @@ function DatePickermodal({
             : prev - 1,
       );
     } else if (type === "minute") {
-      setMinute((prev) => {
+      // Obtener valores actuales sincronizados
+      setMinute((prevMinute) => {
+        let newMinute = prevMinute;
+        let newHour = hour;
+
         if (direction === "up") {
-          return prev === 90 ? 0 : prev + 30;
+          if (prevMinute === 30) {
+            newMinute = 0;
+            newHour = hour === 12 ? 1 : hour + 1;
+          } else {
+            newMinute = 30;
+          }
         } else {
-          return prev === 0 ? 90 : prev - 30;
+          if (prevMinute === 0) {
+            newMinute = 30;
+            newHour = hour === 1 ? 12 : hour - 1;
+          } else {
+            newMinute = 0;
+          }
         }
+
+        // Actualizar hora manualmente
+        setHour(newHour);
+        return newMinute;
       });
     } else if (type === "ampm") {
       setAmPm((prev) => (prev === "AM" ? "PM" : "AM"));

@@ -23,6 +23,12 @@ export interface Picture {
   updatedAt: Date;
 }
 
+export interface ServicesList {
+  id: string
+  label: string;
+  value: string;
+}
+
 export interface Card {
   title: string;
   text: string;
@@ -51,6 +57,11 @@ export interface Information {
   content: string;
 }
 
+export interface Description {
+  title: string;
+  description: string;
+}
+
 export interface Titles {
   id: number;
   title: string;
@@ -64,20 +75,33 @@ export interface Formats {
   medium?: Large;
 }
 
+export interface Errors {
+  company?: boolean;
+  companyMessage?: string;
+  email?: boolean;
+  emailMessage?: string;
+  phone?: boolean;
+  phoneMessage?: string;
+  service?: boolean;
+  serviceMessage?: string;
+  main?: boolean;
+  mainMessage?: string;
+}
+
 export enum EXT {
-  Jpg = '.jpg',
-  PNG = '.png',
-  SVG = '.svg',
+  Jpg = ".jpg",
+  PNG = ".png",
+  SVG = ".svg",
 }
 
 export enum MIME {
-  ImageJPEG = 'image/jpeg',
-  ImagePNG = 'image/png',
-  ImageSVGXML = 'image/svg+xml',
+  ImageJPEG = "image/jpeg",
+  ImagePNG = "image/png",
+  ImageSVGXML = "image/svg+xml",
 }
 
 export enum Provider {
-  AwsS3 = 'aws-s3',
+  AwsS3 = "aws-s3",
 }
 
 export interface Large {
